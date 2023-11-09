@@ -6,6 +6,8 @@ use App\Controllers\UserController;
 $router = new Router();
 
 $router->addRoute('/', UserController::class, 'index');
-$router->addRoute("/create", UserController::class, "create");
+$router->addRoute('/login', UserController::class,'login');
+$router->addRoute('/home', UserController::class,'home');
+$router->addRoute('/logout', UserController::class,'logout');
 
 $router->dispatch($uri);

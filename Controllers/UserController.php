@@ -7,15 +7,30 @@ use App\Models\User;
 
 class UserController extends Controller {
     public function index() {
-        $users = [
-            new User("Labeeb Sabbah", "labeeb@example.com"),
-            new User("Saed Manna","saed@example.com")
-        ];
-
-        $this->render('index', "Users", ['users' => $users]);
+        $this->render('index', "Users");
     }
 
-    public function create() {
-        $this->render('create', "Create User");
+    public function home() {
+        $this->render("home","Home");
+    }
+
+    public function login() {
+        $user = new User;
+        $stmt = $user->conn->prepare("SELECT * FROM users WHERE username = ? LIMIT 1");
+        $stmt->bind_param("s", $_POST['username']);
+        $stmt->execute();
+        $user = $stmt->get_result()->fetch_assoc();
+        if ($user) {
+            if (password_verify($_POST['password'], $user['password'])) {
+                session_regenerate_id();
+                $_SESSION['user'] = $user;
+            }
+        }
+        header("Location: /");
+    }
+
+    public function logout() {
+        session_destroy();
+        header("Location: /");
     }
 }

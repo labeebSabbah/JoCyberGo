@@ -2,12 +2,26 @@
 
 namespace App\Models;
 
-class User {
+class User extends Model {
     public $name;
-    public $email;
+    protected $password;
 
-    public function __construct($name, $email) {
+    public function __construct() {
+        parent::__construct();
+    }
+
+    public function create($name, $password) {
         $this->name = $name;
-        $this->email = $email;
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $this->conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+        $stmt->bind_param("ss", $this->name, $this->password);
+        $stmt->execute();
+    }
+
+    public function all() {
+        $stmt = $this->conn->prepare("SELECT * FROM users");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
     }
 }
