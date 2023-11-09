@@ -12,10 +12,10 @@ class UserController extends Controller {
             new User("Saed Manna","saed@example.com")
         ];
 
-        $this->render('index', ['users' => $users]);
+        $this->render('index', "Users", ['users' => $users]);
     }
 
     public function create() {
-        $this->render('create');
+        $this->render('create', "Create User");
     }
 }
