@@ -1,0 +1,44 @@
+### Rewrite Rules Added by CyberPanel Rewrite Rule Generator
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} !^www. [NC]
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+### End CyberPanel Generated Rules.
+
+### Rewrite Rules Added by CyberPanel Rewrite Rule Generator
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTPS}  !=on
+RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
+<ifModule mod_headers.c>
+# Turn on Expires and set default expires to 3 days
+ExpiresActive On
+ExpiresDefault A259200
+
+# Set up caching on media files for 1 month
+<filesMatch ".(ico|gif|jpg|jpeg|png|flv|pdf|swf|mov|mp3|wmv|ppt)$">
+ExpiresDefault A2419200
+Header append Cache-Control "public"
+</filesMatch>
+
+# Set up 2 Hour caching on commonly updated files
+<filesMatch ".(xml|txt|html|js|css)$">
+ExpiresDefault A7200
+Header append Cache-Control "private, must-revalidate"
+</filesMatch>
+
+# Force no caching for dynamic files
+<filesMatch ".(php|cgi|pl|htm)$">
+ExpiresDefault A0
+Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+Header set Pragma "no-cache"
+</filesMatch>
+</ifModule>
+### End CyberPanel Generated Rules.
+
+cat: /home/jocybergo.me/public_html/.htaccess: No such file or directory
