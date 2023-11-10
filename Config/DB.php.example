@@ -1,0 +1,10 @@
+<?php
+
+namespace App\Config;
+
+class DB {
+    public static $hostname = "localhost";
+    public static $username = "admin";
+    public static $pass = "jocybergo@3566";
+    public static $database = "server";
+}

@@ -3,18 +3,18 @@
 namespace App\Models;
 
 class User extends Model {
-    public $name;
+    public $username;
     protected $password;
 
     public function __construct() {
         parent::__construct();
     }
 
-    public function create($name, $password) {
-        $this->name = $name;
+    public function create($username, $password) {
+        $this->username = $username;
         $this->password = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $this->conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-        $stmt->bind_param("ss", $this->name, $this->password);
+        $stmt->bind_param("ss", $this->username, $this->password);
         $stmt->execute();
     }
 

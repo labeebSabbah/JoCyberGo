@@ -4,9 +4,7 @@ if (isset($_SESSION['user'])) {
   header('location:home');
 }
 ?>
-<div id="app" class="md:!w-10/12">
-
-  <section class="section main-section">
+  <section class="section main-section md:w-10/12">
     <div class="card">
       <header class="card-header">
         <p class="card-header-title">
@@ -55,6 +53,3 @@ if (isset($_SESSION['user'])) {
     </div>
 
   </section>
-
-
-</div>
