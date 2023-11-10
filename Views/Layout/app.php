@@ -1,5 +1,5 @@
 <?php 
-  $file = basename($_SERVER['PHP_SELF']);
+    $uri = $_SERVER["REQUEST_URI"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +16,7 @@
 
 <body class="overflow-x-hidden">
     <div id="app">
-        <?php if ($file != "index.php") : ?>
+        <?php if ($uri != "/") : ?>
         <div id="body">
             <nav id="navbar-main" class="navbar is-fixed-top">
                 <div class="navbar-brand">
@@ -68,7 +68,7 @@
                 <div class="menu is-menu-main">
                     <p class="menu-label">General</p>
                     <ul class="menu-list">
-                        <li class="<?php if ($file == 'home')
+                        <li class="<?php if ($uri == '/home')
                             echo 'active'; ?>">
                             <a href="home">
                                 <span class="icon"><i class="mdi mdi-desktop-mac"></i></span>
@@ -78,42 +78,42 @@
                     </ul>
                     <p class="menu-label">Examples</p>
                     <ul class="menu-list">
-                        <li class="<?php if ($file == "customers")
+                        <li class="<?php if ($uri == "/customers")
                             echo 'active' ?>">
                                 <a href="customers">
                                     <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
                                     <span class="menu-item-label">Customers</span>
                                 </a>
                             </li>
-                            <li class="<?php if ($file == "products")
+                            <li class="<?php if ($uri == "/products")
                             echo 'active' ?>">
                                 <a href="products">
                                     <span class="icon"><i class="mdi mdi-package-variant-closed"></i></span>
                                     <span class="menu-item-label">Products</span>
                                 </a>
                             </li>
-                            <li class="<?php if ($file == "orders")
+                            <li class="<?php if ($uri == "/orders")
                             echo 'active' ?>">
                                 <a href="orders">
                                     <span class="icon"><i class="mdi mdi-square-edit-outline"></i></span>
                                     <span class="menu-item-label">Orders</span>
                                 </a>
                             </li>
-                            <li class="<?php if ($file == 'tables')
+                            <li class="<?php if ($uri == '/tables')
                             echo 'active'; ?>">
                             <a href="tables">
                                 <span class="icon"><i class="mdi mdi-table"></i></span>
                                 <span class="menu-item-label">Tables</span>
                             </a>
                         </li>
-                        <li class="<?php if ($file == 'forms')
+                        <li class="<?php if ($uri == '/forms')
                             echo 'active'; ?>">
                             <a href="forms">
                                 <span class="icon"><i class="mdi mdi-square-edit-outline"></i></span>
                                 <span class="menu-item-label">Forms</span>
                             </a>
                         </li>
-                        <li class="<?php if ($file == 'profile')
+                        <li class="<?php if ($uri == 'profile')
                             echo 'active'; ?>">
                             <a href="profile">
                                 <span class="icon"><i class="mdi mdi-account-circle"></i></span>
