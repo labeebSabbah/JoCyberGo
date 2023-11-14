@@ -12,4 +12,5 @@ class CustomerController extends Controller
         $customers = $customers->all();
         $this->render('customers', "Customers",['customers' => $customers]);
     }
+    
 }

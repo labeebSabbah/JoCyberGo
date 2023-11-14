@@ -12,4 +12,6 @@ class OrderController extends Controller
         $orders = $orders->all();
         $this->render('orders', "orders",['orders' => $orders]);
     }
+
+    
 }

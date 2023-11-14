@@ -32,4 +32,9 @@ class UserController extends Controller {
         session_destroy();
         header("Location: /");
     }
+
+    public function profile(){
+
+        $this->render('profile',"profile");
+    }
 }

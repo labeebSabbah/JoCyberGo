@@ -44,7 +44,7 @@
                                 <span class="icon"><i class="mdi mdi-chevron-down"></i></span>
                             </a>
                             <div class="navbar-dropdown">
-                                <a href="profile.php" class="navbar-item">
+                                <a href="profile" class="navbar-item">
                                     <span class="icon"><i class="mdi mdi-account"></i></span>
                                     <span>My Profile</span>
                                 </a>
@@ -62,11 +62,11 @@
             <aside class="aside is-placed-left is-expanded">
                 <div class="aside-tools">
                     <div>
-                        Admin <b class="font-black">One</b>
+                         <b class="font-black">JoCyberGo</b>
                     </div>
                 </div>
                 <div class="menu is-menu-main">
-                    <p class="menu-label">General</p>
+                    <!-- <p class="menu-label">General</p> -->
                     <ul class="menu-list">
                         <li class="<?php if ($uri == '/home')
                             echo 'active'; ?>">
@@ -76,7 +76,7 @@
                             </a>
                         </li>
                     </ul>
-                    <p class="menu-label">Examples</p>
+                    <!-- <p class="menu-label">Examples</p> -->
                     <ul class="menu-list">
                         <li class="<?php if ($uri == "/customers")
                             echo 'active' ?>">
@@ -99,27 +99,26 @@
                                     <span class="menu-item-label">Orders</span>
                                 </a>
                             </li>
-                            <li class="<?php if ($uri == '/tables')
-                            echo 'active'; ?>">
+                            <!-- <li class="
+                            
+                            ">
                             <a href="tables">
                                 <span class="icon"><i class="mdi mdi-table"></i></span>
                                 <span class="menu-item-label">Tables</span>
                             </a>
                         </li>
-                        <li class="<?php if ($uri == '/forms')
-                            echo 'active'; ?>">
+                        <li class="
                             <a href="forms">
                                 <span class="icon"><i class="mdi mdi-square-edit-outline"></i></span>
                                 <span class="menu-item-label">Forms</span>
                             </a>
                         </li>
-                        <li class="<?php if ($uri == 'profile')
-                            echo 'active'; ?>">
+                        <li class="
                             <a href="profile">
                                 <span class="icon"><i class="mdi mdi-account-circle"></i></span>
                                 <span class="menu-item-label">Profile</span>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </aside>
