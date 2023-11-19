@@ -7,7 +7,8 @@ use App\Models\Model;
 class Product extends Model
 {
     public $name;
-    public $email;
+    public $price;
+    public $is_deleted;
 
     public function __construct() {
         parent::__construct();

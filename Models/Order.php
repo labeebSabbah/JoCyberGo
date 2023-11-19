@@ -6,8 +6,11 @@ use App\Models\Model;
 
 class Order extends Model
 {
-    public $name;
-    public $email;
+    public $customer_id;
+    public $total_price;
+    public $created_at;
+    public $is_done;
+    public $done_at;
 
     public function __construct() {
         parent::__construct();

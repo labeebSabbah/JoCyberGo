@@ -8,7 +8,7 @@ if (!isset($_SESSION['user'])){
   <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
     <ul>
       <li>Admin</li>
-      <li>Tables</li>
+      <li>Customers</li>
     </ul>
     <!-- <a href="https://github.com/justboil/admin-one-tailwind" target="_blank" class="button blue">
       <span class="icon"><i class="mdi mdi-github-circle"></i></span>
@@ -20,7 +20,7 @@ if (!isset($_SESSION['user'])){
 <section class="is-hero-bar">
   <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
     <h1 class="title">
-      Responsive Tables
+      Customers Table
     </h1>
     <button class="button light">Button</button>
   </div>
@@ -31,7 +31,7 @@ if (!isset($_SESSION['user'])){
       <header class="card-header">
         <p class="card-header-title">
           <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
-          Clients
+          Customers
         </p>
         <a href="#" class="card-header-icon">
           <span class="icon"><i class="mdi mdi-reload"></i></span>
@@ -39,6 +39,7 @@ if (!isset($_SESSION['user'])){
       </header>
       <div class="card-content">
         <table>
+        <?php if($customers): ?>
           <thead>
           <tr>
             <th class="checkbox-cell">
@@ -49,14 +50,12 @@ if (!isset($_SESSION['user'])){
             </th>
             <th class="image-cell"></th>
             <th>Name</th>
-            <th>Company</th>
-            <th>City</th>
-            <th>Progress</th>
-            <th>Created</th>
+            <th>Email</th>
             <th></th>
           </tr>
           </thead>
           <tbody>
+            <?php foreach($customers as $customer): ?>
           <tr>
             <td class="checkbox-cell">
               <label class="checkbox">
@@ -69,15 +68,8 @@ if (!isset($_SESSION['user'])){
                 <img src="https://avatars.dicebear.com/v2/initials/rebecca-bauch.svg" class="rounded-full">
               </div>
             </td>
-            <td data-label="Name">Rebecca Bauch</td>
-            <td data-label="Company">Daugherty-Daniel</td>
-            <td data-label="City">South Cory</td>
-            <td data-label="Progress" class="progress-cell">
-              <progress max="100" value="79">79</progress>
-            </td>
-            <td data-label="Created">
-              <small class="text-gray-500" title="Oct 25, 2021">Oct 25, 2021</small>
-            </td>
+            <td data-label="Name"><?php $customer["name"] ?></td>
+            <td data-label="Email"><?php $customer["email"] ?></td>
             <td class="actions-cell">
               <div class="buttons right nowrap">
                 <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
@@ -89,7 +81,13 @@ if (!isset($_SESSION['user'])){
               </div>
             </td>
           </tr>
+          <?php endforeach; ?>
           </tbody>
+          <?php else: ?>
+            <tr>
+              <th colspan="5" style="text-align: center;">No data were retrieved.</th>
+            </tr>
+          <?php endif; ?>
         </table>
         <div class="table-pagination">
           <div class="flex items-center justify-between">
