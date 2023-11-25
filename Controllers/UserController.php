@@ -10,7 +10,7 @@ class UserController extends Controller {
     }
 
     public function home() {
-        $this->render("home","Home");
+        $this->render("home","Dashboard");
     }
 
     public function login() {
@@ -22,6 +22,7 @@ class UserController extends Controller {
         if ($user) {
             if (password_verify($_POST['password'], $user['password'])) {
                 session_regenerate_id();
+                unset($user["password"]);
                 $_SESSION['user'] = $user;
             }
         }
@@ -34,7 +35,32 @@ class UserController extends Controller {
     }
 
     public function profile(){
+        $this->render('profile',"Profile");
+    }
 
-        $this->render('profile',"profile");
+    public function update() {
+        $User = new User;
+        $stmt = $User->conn->prepare("SELECT * FROM users WHERE username = ? LIMIT 1");
+        $stmt->bind_param("s", $_SESSION['user']['username']);
+        $stmt->execute();
+        $user = $stmt->get_result()->fetch_assoc();
+        if ($user) {
+            if (password_verify($_POST['password'], $user['password'])) {
+                if ($_POST["new-password"] === $_POST["confirm-new"]) {
+                    $password = password_hash($_POST["new-password"], PASSWORD_DEFAULT);
+                    $stmt = $User->conn->prepare("UPDATE users SET password = ? WHERE id = ?");
+                    $stmt->bind_param("si", $password, $user["id"]);
+                    $stmt->execute();
+                } else {
+                    $error = "New Password and Confirm Password must match";
+                }
+            }
+            else {
+                $error = "Entered Password doesn't match our credentials";
+            }
+        }
+        $_SESSION["message"] = $error ?? "Password Updated Successfully";
+        header("Location: /profile");
+        exit;
     }
 }

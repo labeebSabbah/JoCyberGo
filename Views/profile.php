@@ -4,10 +4,6 @@
       <li>Admin</li>
       <li>Profile</li>
     </ul>
-    <!-- <a href="https://github.com/justboil/admin-one-tailwind" target="_blank" class="button blue">
-      <span class="icon"><i class="mdi mdi-github-circle"></i></span>
-      <span>GitHub</span>
-    </a> -->
   </div>
 </section>
 
@@ -21,7 +17,7 @@
 </section>
 
   <section class="section main-section">
-    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
+    <!-- <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
       <div class="card">
         <header class="card-header">
           <p class="card-header-title">
@@ -30,7 +26,7 @@
           </p>
         </header>
         <div class="card-content">
-          <form>
+          <form method="POST">
             <div class="field">
               <label class="label">Avatar</label>
               <div class="field-body">
@@ -46,24 +42,13 @@
             </div>
             <hr>
             <div class="field">
-              <label class="label">Name</label>
+              <label class="label">Username</label>
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <input type="text" autocomplete="on" name="name" value="John Doe" class="input" required>
+                    <input type="text" autocomplete="on" name="username" value="" class="input" required>
                   </div>
-                  <p class="help">Required. Your name</p>
-                </div>
-              </div>
-            </div>
-            <div class="field">
-              <label class="label">E-mail</label>
-              <div class="field-body">
-                <div class="field">
-                  <div class="control">
-                    <input type="email" autocomplete="on" name="email" value="user@example.com" class="input" required>
-                  </div>
-                  <p class="help">Required. Your e-mail</p>
+                  <p class="help">Required. Your username</p>
                 </div>
               </div>
             </div>
@@ -91,21 +76,15 @@
           </div>
           <hr>
           <div class="field">
-            <label class="label">Name</label>
+            <label class="label">Username</label>
             <div class="control">
-              <input type="text" readonly value="John Doe" class="input is-static">
+              <input type="text" readonly value="<?php echo $_SESSION['user']['username']; ?>" class="input is-static">
             </div>
           </div>
           <hr>
-          <div class="field">
-            <label class="label">E-mail</label>
-            <div class="control">
-              <input type="text" readonly value="user@example.com" class="input is-static">
-            </div>
-          </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="card">
       <header class="card-header">
         <p class="card-header-title">
@@ -114,11 +93,11 @@
         </p>
       </header>
       <div class="card-content">
-        <form>
+        <form method="POST" action="/profile/update">
           <div class="field">
             <label class="label">Current password</label>
             <div class="control">
-              <input type="password" name="password_current" autocomplete="current-password" class="input" required>
+              <input type="password" name="password" class="input" required>
             </div>
             <p class="help">Required. Your current password</p>
           </div>
@@ -126,14 +105,14 @@
           <div class="field">
             <label class="label">New password</label>
             <div class="control">
-              <input type="password" autocomplete="new-password" name="password" class="input" required>
+              <input type="password" name="new-password" class="input" required>
             </div>
             <p class="help">Required. New password</p>
           </div>
           <div class="field">
             <label class="label">Confirm password</label>
             <div class="control">
-              <input type="password" autocomplete="new-password" name="password_confirmation" class="input" required>
+              <input type="password" name="confirm-new" class="input" required>
             </div>
             <p class="help">Required. New password one more time</p>
           </div>
@@ -156,9 +135,6 @@
       <div>
         © 2023, JoCyberGo Team
       </div>
-      <!-- <a href="https://github.com/justboil/admin-one-tailwind" style="height: 20px">
-        <img src="https://img.shields.io/github/v/release/justboil/admin-one-tailwind?color=%23999">
-      </a> -->
     </div>
     
     

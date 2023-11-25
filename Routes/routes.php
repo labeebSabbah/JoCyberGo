@@ -13,6 +13,7 @@ $router->addRoute('/login', UserController::class,'login');
 $router->addRoute('/home', UserController::class,'home');
 $router->addRoute('/logout', UserController::class,'logout');
 $router->addRoute('/profile', UserController::class,'profile');
+$router->addRoute('/profile/update', UserController::class, 'update');
 
 $router->addRoute('/customers', CustomerController::class,'index');
 

@@ -10,6 +10,6 @@ class ProductController extends Controller
     {
         $products = new Product;
         $products = $products->all();
-        $this->render('products', "products",['products' => $products]);
+        $this->render('products', "Products",['products' => $products]);
     }
 }

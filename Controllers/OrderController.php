@@ -10,7 +10,7 @@ class OrderController extends Controller
     {
         $orders = new Order;
         $orders = $orders->all();
-        $this->render('orders', "orders",['orders' => $orders]);
+        $this->render('orders', "Orders",['orders' => $orders]);
     }
 
     
