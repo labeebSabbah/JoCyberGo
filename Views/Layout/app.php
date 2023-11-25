@@ -67,7 +67,7 @@
                     <ul class="menu-list">
                         <li class="<?php if ($uri == '/home')
                             echo 'active'; ?>">
-                            <a href="home">
+                            <a href="/home">
                                 <span class="icon"><i class="mdi mdi-desktop-mac"></i></span>
                                 <span class="menu-item-label">Dashboard</span>
                             </a>
@@ -75,27 +75,76 @@
                     </ul>
                     <!-- <p class="menu-label">Examples</p> -->
                     <ul class="menu-list">
+
+                    
                         <li class="<?php if ($uri == "/customers")
                             echo 'active' ?>">
-                                <a href="customers">
+                                <a href="/customers">
                                     <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
                                     <span class="menu-item-label">Customers</span>
                                 </a>
                             </li>
-                            <li class="<?php if ($uri == "/products")
+
+
+
+                            <li class="<?php if (in_array($uri, ["/orders", "/order/create"]))
                             echo 'active' ?>">
-                                <a href="products">
-                                    <span class="icon"><i class="mdi mdi-package-variant-closed"></i></span>
-                                    <span class="menu-item-label">Products</span>
-                                </a>
-                            </li>
-                            <li class="<?php if ($uri == "/orders")
-                            echo 'active' ?>">
-                                <a href="orders">
+                                <a class="dropdown">
                                     <span class="icon"><i class="mdi mdi-square-edit-outline"></i></span>
                                     <span class="menu-item-label">Orders</span>
+                                    <?php if (in_array($uri, ["/orders", "/order/create"])): ?>
+                                    <span class="icon"><i class="mdi mdi-minus"></i></span>
+                                    <?php else: ?>
+                                    <span class="icon"><i class="mdi mdi-plus"></i></span>
+                                    <?php endif; ?>
+                                </a>
+                                    <ul>
+                                        <li >
+                                            <a href="/order/create">
+                                                <span class="menu-item-label">    New Orders</span>
+                                             </a>
+                                        </li>
+                                        <li >
+                                            <a href="/orders">
+                                                <span class="menu-item-label">     Orders List</span>
+                                             </a>
+                                        </li>
+          
+                                    </ul>
+                            </li>
+                            
+                            
+                            <li class="<?php if ($uri == "/products")
+                            echo 'active' ?>">
+                                <a class="dropdown">
+                                    <span class="icon"><i class="mdi mdi-package-variant-closed"></i></span>
+                                    <span class="menu-item-label">Products</span>
+                                    <?php if ($uri == "/products"): ?>
+                                    <span class="icon"><i class="mdi mdi-minus"></i></span>
+                                    <?php else: ?>
+                                    <span class="icon"><i class="mdi mdi-plus"></i></span>
+                                    <?php endif; ?>
+
+                                </a>
+                                    <ul>
+                                        <li >
+                                            <a href="/products">
+                                                <span class="menu-item-label">All Products</span>
+                                             </a>
+                                        </li>
+          
+                                    </ul>
+                             </li>
+
+    
+                             <li class="<?php if ($uri == "/productionline")
+                            echo 'active' ?>">
+                                <a href="/productionline">
+                                    <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
+                                    <span class="menu-item-label">Production Line</span>
                                 </a>
                             </li>
+                            
                             <!-- <li class="
                             
                             ">

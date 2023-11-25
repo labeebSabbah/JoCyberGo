@@ -33,10 +33,10 @@ if (!isset($_SESSION['user'])) {
           <div class="flex items-center justify-between">
             <div class="widget-label">
               <h3>
-                Clients
+                Customers
               </h3>
               <h1>
-                512
+                <?php echo $customers; ?>
               </h1>
             </div>
             <span class="icon widget-icon text-green-500"><i class="mdi mdi-account-multiple mdi-48px"></i></span>
@@ -64,10 +64,10 @@ if (!isset($_SESSION['user'])) {
           <div class="flex items-center justify-between">
             <div class="widget-label">
               <h3>
-                Performance
+                New Orders
               </h3>
               <h1>
-                256%
+                256
               </h1>
             </div>
             <span class="icon widget-icon text-red-500"><i class="mdi mdi-finance mdi-48px"></i></span>
@@ -113,7 +113,7 @@ if (!isset($_SESSION['user'])) {
       </div>
     </div> -->
 
-    <div class="card has-table">
+    <!-- <div class="card has-table">
       <header class="card-header">
         <p class="card-header-title">
           <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
@@ -410,7 +410,7 @@ if (!isset($_SESSION['user'])) {
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
 
 <footer class="footer">

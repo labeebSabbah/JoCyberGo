@@ -5,6 +5,7 @@ use App\Controllers\UserController;
 use App\Controllers\CustomerController;
 use App\Controllers\ProductController;
 use App\Controllers\OrderController;
+use App\Controllers\ProductionLineController;
 
 $router = new Router();
 
@@ -20,6 +21,10 @@ $router->addRoute('/customers', CustomerController::class,'index');
 $router->addRoute('/products', ProductController::class,'index');
 
 $router->addRoute('/orders', OrderController::class,'index');
+$router->addRoute('/order/create', OrderController::class, "create");
+
+$router->addRoute('/productionline', ProductionLineController::class,'index');
+
 
 
 

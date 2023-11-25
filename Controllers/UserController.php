@@ -4,13 +4,17 @@ namespace App\Controllers;
 
 use App\Models\User;
 
+use App\Models\Customer;
+
 class UserController extends Controller {
     public function index() {
         $this->render('index', "Users");
     }
 
     public function home() {
-        $this->render("home","Dashboard");
+        $Customer = new Customer;
+        $customers = $Customer->all()->num_rows;
+        $this->render("home","Dashboard", ["customers" => $customers]);
     }
 
     public function login() {

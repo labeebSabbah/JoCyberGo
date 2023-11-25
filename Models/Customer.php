@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Model;
-
 class Customer extends Model
 {
     public $name;
@@ -17,6 +15,6 @@ class Customer extends Model
         $stmt = $this->conn->prepare("SELECT * FROM customers");
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_assoc();
+        return $result;
     }
 }

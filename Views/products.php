@@ -2,6 +2,16 @@
 if (!isset($_SESSION['user'])){
     header('location:/');
 }
+$products = [
+  [
+    "name" => "Product 1",
+    "price" => "20"
+   ],
+   [
+    "name" => "Product 2",
+    "price" => "54"
+   ],
+];
 ?>
 <section class="is-title-bar">
   <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
@@ -57,8 +67,8 @@ if (!isset($_SESSION['user'])){
                 <span class="check"></span>
               </label>
             </td>
-            <td data-label="Name"><?php $product["name"] ?></td>
-            <td data-label="Price"><?php $product["price"] ?></td>
+            <td data-label="Name"><?php echo $product["name"]; ?></td>
+            <td data-label="Price"><?php echo $product["price"]; ?>$</td>
             <td class="actions-cell">
               <div class="buttons right nowrap">
                 <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
