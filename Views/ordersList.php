@@ -24,14 +24,14 @@ $orders = [
   </div>
 </section>
 
-<section class="is-hero-bar">
+<!-- <section class="is-hero-bar">
   <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
     <h1 class="title">
       Orders Table
     </h1>
     <button class="button light">Button</button>
   </div>
-</section>
+</section> -->
 
   <section class="section main-section">
     <div class="card has-table">
@@ -40,7 +40,7 @@ $orders = [
           <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
           Orders
         </p>
-        <a href="#" class="card-header-icon">
+        <a href="/orders" class="card-header-icon">
           <span class="icon"><i class="mdi mdi-reload"></i></span>
         </a>
       </header>
@@ -49,12 +49,12 @@ $orders = [
         <?php if($orders): ?>
           <thead>
           <tr>
-            <th class="checkbox-cell">
+            <!-- <th class="checkbox-cell">
               <label class="checkbox">
                 <input type="checkbox">
                 <span class="check"></span>
               </label>
-            </th>
+            </th> -->
             <th>Customer Name</th>
             <th>Total Price</th>
             <th>Created at</th>
@@ -64,12 +64,12 @@ $orders = [
           <tbody>
             <?php foreach($orders as $order): ?>
           <tr>
-            <td class="checkbox-cell">
+            <!-- <td class="checkbox-cell">
               <label class="checkbox">
                 <input type="checkbox">
                 <span class="check"></span>
               </label>
-            </td>
+            </td> -->
             <td data-label="Customer Name"><?php echo $order["customer_id"]; ?></td>
             <td data-label="Toatal Price"><?php echo $order["total_price"]; ?>$</td>
             <td data-label="Created at"><?php echo $order["created_at"]; ?></td>
@@ -92,7 +92,7 @@ $orders = [
             </tr>
           <?php endif; ?>
         </table>
-        <div class="table-pagination">
+        <!-- <div class="table-pagination">
           <div class="flex items-center justify-between">
             <div class="buttons">
               <button type="button" class="button active">1</button>
@@ -101,7 +101,7 @@ $orders = [
             </div>
             <small>Page 1 of 3</small>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>

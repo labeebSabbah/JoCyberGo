@@ -22,14 +22,14 @@ $products = [
   </div>
 </section>
 
-<section class="is-hero-bar">
+<!-- <section class="is-hero-bar">
   <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
     <h1 class="title">
       Products Table
     </h1>
     <button class="button light">Button</button>
   </div>
-</section>
+</section> -->
 
   <section class="section main-section">
     <div class="card has-table">
@@ -38,7 +38,7 @@ $products = [
           <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
           Products
         </p>
-        <a href="#" class="card-header-icon">
+        <a href="/products" class="card-header-icon">
           <span class="icon"><i class="mdi mdi-reload"></i></span>
         </a>
       </header>
@@ -47,12 +47,12 @@ $products = [
         <?php if($products): ?>
           <thead>
           <tr>
-            <th class="checkbox-cell">
+            <!-- <th class="checkbox-cell">
               <label class="checkbox">
                 <input type="checkbox">
                 <span class="check"></span>
               </label>
-            </th>
+            </th> -->
             <th>Name</th>
             <th>Price</th>
             <th></th>
@@ -61,12 +61,12 @@ $products = [
           <tbody>
             <?php foreach($products as $product): ?>
           <tr>
-            <td class="checkbox-cell">
+            <!-- <td class="checkbox-cell">
               <label class="checkbox">
                 <input type="checkbox">
                 <span class="check"></span>
               </label>
-            </td>
+            </td> -->
             <td data-label="Name"><?php echo $product["name"]; ?></td>
             <td data-label="Price"><?php echo $product["price"]; ?>$</td>
             <td class="actions-cell">
@@ -88,7 +88,7 @@ $products = [
             </tr>
           <?php endif; ?>
         </table>
-        <div class="table-pagination">
+        <!-- <div class="table-pagination">
           <div class="flex items-center justify-between">
             <div class="buttons">
               <button type="button" class="button active">1</button>
@@ -97,7 +97,7 @@ $products = [
             </div>
             <small>Page 1 of 3</small>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
