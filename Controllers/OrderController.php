@@ -10,12 +10,22 @@ class OrderController extends Controller
     {
         $orders = new Order;
         $orders = $orders->all();
-        $this->render('ordersList', "Orders",['orders' => $orders]);
+        $this->render('Order/index', "Orders",['orders' => $orders]);
     }
 
     public function create()
     {
-        $this->render("orderCreate", "New Order");
+        $this->render("Order/create", "New Order");
+    }
+
+    public function view()
+    {
+        $this->render("Order/view", "View Order");
+    }
+
+    public function complete()
+    {
+        header("Location: /orders");
     }
     
 }

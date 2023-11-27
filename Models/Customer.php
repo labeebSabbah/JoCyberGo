@@ -17,4 +17,12 @@ class Customer extends Model
         $result = $stmt->get_result();
         return $result;
     }
+
+    public function create($name, $email) {
+        $this->name = $name;
+        $this->email = $email;
+        $stmt = $this->conn->prepare("INSERT INTO products (name, email) VALUE (?, ?)");
+        $stmt->bind_param("ss", $this->name, $this->email);
+        $stmt->execute();
+    }
 }
