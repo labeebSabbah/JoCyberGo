@@ -1,0 +1,8 @@
+<?php
+
+namespace App\Config;
+
+class Thingworx {
+    public static $host = "";
+    public static $key = "";
+}
