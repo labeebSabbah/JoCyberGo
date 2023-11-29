@@ -1,11 +1,13 @@
-<?php 
+<?php
 
+use App\Config\Thingworx;
 use App\Routes\Router;
 use App\Controllers\UserController;
 use App\Controllers\CustomerController;
 use App\Controllers\ProductController;
 use App\Controllers\OrderController;
 use App\Controllers\ProductionLineController;
+use App\Controllers\ThingworxController;
 
 $router = new Router();
 
@@ -19,13 +21,20 @@ $router->addRoute('/profile/update', UserController::class, 'update');
 $router->addRoute('/customers', CustomerController::class,'index');
 
 $router->addRoute('/products', ProductController::class,'index');
+$router->addRoute('/product/create', ProductController::class, 'create');
+$router->addRoute('/product/store', ProductController::class, 'store');
+$router->addRoute('/product', ProductController::class,'view');
+$router->addRoute('/product/update', ProductController::class, 'update');
+$router->addRoute('/product/delete', ProductController::class, 'delete');
+
 
 $router->addRoute('/orders', OrderController::class,'index');
 $router->addRoute('/order/create', OrderController::class, "create");
 
 $router->addRoute('/productionline', ProductionLineController::class,'index');
 
-
+$router->addRoute("/test", ThingworxController::class, "test");
+$router->addRoute("/test1", ThingworxController::class, "test1");
 
 
 $router->dispatch($uri);

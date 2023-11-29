@@ -31,7 +31,7 @@ class ProductController extends Controller
 
     public function view()
     {
-        $id = $_GET["id"];
+        $id = $_POST["id"];
 
         $Product = new Product;
         $product = $Product->find($id);
@@ -47,7 +47,7 @@ class ProductController extends Controller
         $Product = new Product;
         $Product->update($id, $name, $price);
 
-        header("Location: /product/{$id}");
+        header("Location: /products");
     }
 
     public function delete()

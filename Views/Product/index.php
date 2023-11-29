@@ -1,17 +1,11 @@
 <?php
+
+use App\Models\Product;
+
 if (!isset($_SESSION['user'])){
     header('location:/');
 }
-$products = [
-  [
-    "name" => "Product 1",
-    "price" => "20"
-   ],
-   [
-    "name" => "Product 2",
-    "price" => "54"
-   ],
-];
+
 ?>
 <section class="is-title-bar">
   <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
@@ -53,6 +47,8 @@ $products = [
                 <span class="check"></span>
               </label>
             </th> -->
+            <th>#</th>
+
             <th>Name</th>
             <th>Price</th>
             <th></th>
@@ -67,16 +63,24 @@ $products = [
                 <span class="check"></span>
               </label>
             </td> -->
+            <td data-label="id"><?php echo $product["id"]; ?></td>
+
             <td data-label="Name"><?php echo $product["name"]; ?></td>
             <td data-label="Price"><?php echo $product["price"]; ?>$</td>
             <td class="actions-cell">
               <div class="buttons right nowrap">
-                <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
-                  <span class="icon"><i class="mdi mdi-eye"></i></span>
-                </button>
-                <button class="button small red --jb-modal" data-target="sample-modal" type="button">
-                  <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-                </button>
+                <form  action="/product" method="POST">
+
+                  <button title="View" class="button small blue --jb-modal" id="view" type="submit" name="id" value="<?php echo $product['id'] ?>">
+                    <span class="icon"><i class="mdi mdi-eye"></i></span>
+                  </button>
+                </form>
+                <form action="/product/delete" method="POST">
+
+                  <button title="Delete" class="button small red --jb-modal" id="delete" type="submit" name="id" value="<?php echo $product['id'] ?>">
+                    <span class="icon"><i class="mdi mdi-trash-can"></i></span>
+                  </button>
+                </form>
               </div>
             </td>
           </tr>
@@ -116,3 +120,19 @@ $products = [
     
   </div> 
 </footer>
+
+
+
+<script>
+
+
+
+
+
+
+
+
+
+
+
+</script>

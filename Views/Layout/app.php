@@ -114,12 +114,12 @@
                             </li>
                             
                             
-                            <li class="<?php if ($uri == "/products")
+                            <li class="<?php if (in_array($uri, ["/products", "/product/create"]))
                             echo 'active' ?>">
                                 <a class="dropdown">
                                     <span class="icon"><i class="mdi mdi-package-variant-closed"></i></span>
                                     <span class="menu-item-label">Products</span>
-                                    <?php if ($uri == "/products"): ?>
+                                    <?php if (in_array($uri, ["/products", "/product/create"])): ?>
                                     <span class="icon"><i class="mdi mdi-minus"></i></span>
                                     <?php else: ?>
                                     <span class="icon"><i class="mdi mdi-plus"></i></span>
@@ -132,7 +132,11 @@
                                                 <span class="menu-item-label">All Products</span>
                                              </a>
                                         </li>
-          
+                                        <li >
+                                            <a href="/product/create">
+                                                <span class="menu-item-label">New Product</span>
+                                             </a>
+                                        </li>
                                     </ul>
                              </li>
 

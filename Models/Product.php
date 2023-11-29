@@ -13,7 +13,7 @@ class Product extends Model
     }
 
     public function all() {
-        $stmt = $this->conn->prepare("SELECT * FROM products");
+        $stmt = $this->conn->prepare("SELECT * FROM products WHERE is_deleted=false");
         $stmt->execute();
         $result = $stmt->get_result();
         return $result;
