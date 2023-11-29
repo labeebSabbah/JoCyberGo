@@ -41,4 +41,3 @@ Header set Pragma "no-cache"
 </ifModule>
 ### End CyberPanel Generated Rules.
 
-cat: /home/jocybergo.me/public_html/.htaccess: No such file or directory
