@@ -55,10 +55,12 @@ $orders = [
                 <span class="check"></span>
               </label>
             </th> -->
-            <th>Customer Name</th>
-            <th>Total Price</th>
-            <th>Created at</th>
-            <th></th>
+            <th>#</th>
+            <th>Date </th>
+            <th>Customer Name </th>
+            <th>Price </th>
+            <th>View</th>
+            
           </tr>
           </thead>
           <tbody>
@@ -71,16 +73,19 @@ $orders = [
               </label>
             </td> -->
             <td data-label="Customer Name"><?php echo $order["customer_id"]; ?></td>
+            <td data-label="Customer Name"><?php echo $order["customer_id"]; ?></td>
             <td data-label="Toatal Price"><?php echo $order["total_price"]; ?>$</td>
             <td data-label="Created at"><?php echo $order["created_at"]; ?></td>
             <td class="actions-cell">
-              <div class="buttons right nowrap">
-                <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
-                  <span class="icon"><i class="mdi mdi-eye"></i></span>
+              <div class="buttons center nowrap">
+              <form  action="/order/view" method="POST">
+                <button title="View" class="button small blue --jb-modal" id="view" type="submit" name="id" value="<?php echo $order["order_id"]; ?>">
+                     <span class="icon"><i class="mdi mdi-eye"></i></span>
                 </button>
-                <button class="button small red --jb-modal" data-target="sample-modal" type="button">
+              </form>
+                <!-- <button class="button small red --jb-modal" data-target="sample-modal" type="button">
                   <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-                </button>
+                </button> -->
               </div>
             </td>
           </tr>

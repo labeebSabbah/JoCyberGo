@@ -30,6 +30,9 @@ $router->addRoute('/product/delete', ProductController::class, 'delete');
 
 $router->addRoute('/orders', OrderController::class,'index');
 $router->addRoute('/order/create', OrderController::class, "create");
+$router->addRoute('/order/store', OrderController::class, 'store');
+$router->addRoute('/order/view', OrderController::class, "view");
+$router->addRoute('/order/delete', OrderController::class, "delete");
 
 $router->addRoute('/productionline', ProductionLineController::class,'index');
 

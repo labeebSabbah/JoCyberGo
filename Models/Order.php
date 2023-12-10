@@ -28,4 +28,8 @@ class Order extends Model
         $stmt->bind_param("id", $this->customer_id, $this->total_price);
         $stmt->execute();
     }
+
+    public function delete($id) {
+        
+    }
 }

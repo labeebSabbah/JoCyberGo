@@ -41,7 +41,7 @@
                                 <span class="icon"><i class="mdi mdi-chevron-down"></i></span>
                             </a>
                             <div class="navbar-dropdown">
-                                <a href="profile" class="navbar-item">
+                                <a href="/profile" class="navbar-item">
                                     <span class="icon"><i class="mdi mdi-account"></i></span>
                                     <span>My Profile</span>
                                 </a>
@@ -128,13 +128,13 @@
                                 </a>
                                     <ul>
                                         <li >
-                                            <a href="/products">
-                                                <span class="menu-item-label">All Products</span>
+                                            <a href="/product/create">
+                                                <span class="menu-item-label">New Products</span>
                                              </a>
                                         </li>
                                         <li >
-                                            <a href="/product/create">
-                                                <span class="menu-item-label">New Product</span>
+                                            <a href="/products">
+                                                <span class="menu-item-label">All Product</span>
                                              </a>
                                         </li>
                                     </ul>
