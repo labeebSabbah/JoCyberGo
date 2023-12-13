@@ -2,18 +2,6 @@
 if (!isset($_SESSION['user'])){
     header('location:/');
 }
-$orders = [
-  [
-    "customer_id" => "1",
-    "total_price" => "200",
-    "created_at" => "2020-12-31"
-  ],
-  [
-    "customer_id" => "2",
-    "total_price" => "250",
-    "created_at" => "2020-12-31"
-  ],
-];
 ?>
 <section class="is-title-bar">
   <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
@@ -57,6 +45,7 @@ $orders = [
             </th> -->
             <th>#</th>
             <th>Date </th>
+            <th>Customer #</th>
             <th>Customer Name </th>
             <th>Price </th>
             <th>View</th>
@@ -72,14 +61,17 @@ $orders = [
                 <span class="check"></span>
               </label>
             </td> -->
+            <td data-label="Customer Name"><?php echo $order["id"]; ?></td>
+            <td data-label="Customer Name"><?php echo $order["created_at"]; ?></td>
             <td data-label="Customer Name"><?php echo $order["customer_id"]; ?></td>
-            <td data-label="Customer Name"><?php echo $order["customer_id"]; ?></td>
-            <td data-label="Toatal Price"><?php echo $order["total_price"]; ?>$</td>
-            <td data-label="Created at"><?php echo $order["created_at"]; ?></td>
+
+
+            <td data-label="Toatal Price"><?php echo $order["name"]; ?></td>
+            <td data-label="Created at"><?php echo $order["total_price"]; ?>$</td>
             <td class="actions-cell">
               <div class="buttons center nowrap">
               <form  action="/order/view" method="POST">
-                <button title="View" class="button small blue --jb-modal" id="view" type="submit" name="id" value="<?php echo $order["order_id"]; ?>">
+                <button title="View" class="button small blue --jb-modal" id="view" type="submit" name="id" value="<?php echo $order["id"]; ?>">
                      <span class="icon"><i class="mdi mdi-eye"></i></span>
                 </button>
               </form>

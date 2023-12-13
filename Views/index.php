@@ -4,12 +4,24 @@ if (isset($_SESSION['user'])) {
   header('location:home');
 }
 ?>
+
+<style>
+  #logo {
+    border: none;
+    border-radius: 50%;
+}
+</style>
+
+<center>
+
+  </center>
   <section class="section main-section md:w-10/12">
     <div class="card">
       <header class="card-header">
         <p class="card-header-title">
-          <span class="icon"><i class="mdi mdi-lock"></i></span>
-          Login
+          <img id="logo" src="/src/img/logo_1.png" width="100" height="100"  >
+          <!-- <span class="icon"><i class="mdi mdi-lock"></i></span>
+          Login -->
         </p>
       </header>
       <div class="card-content">

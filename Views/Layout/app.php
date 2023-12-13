@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/src/css/main.css">
+    <link rel="icon" type="image/png" href="/src/img/logo.png" >
     <title>
         <?php echo $title ?>
     </title>
@@ -34,7 +35,7 @@
                         <div class="navbar-item dropdown has-divider has-user-avatar">
                             <a class="navbar-link">
                                 <div class="user-avatar">
-                                    <img src="https://avatars.dicebear.com/v2/initials/john-doe.svg" alt="John Doe"
+                                    <img src="/src/img/avatar.png" alt="John Doe"
                                         class="rounded-full">
                                 </div>
                                 <div class="is-user-name"><span><?php echo $_SESSION['user']["username"]; ?></span></div>
@@ -46,7 +47,7 @@
                                     <span>My Profile</span>
                                 </a>
                                 <hr class="navbar-divider">
-                                <a href="logout" class="navbar-item">
+                                <a href="/logout" class="navbar-item">
                                     <span class="icon"><i class="mdi mdi-logout"></i></span>
                                     <span>Log Out</span>
                                 </a>
@@ -59,6 +60,7 @@
             <aside class="aside is-placed-left is-expanded">
                 <div class="aside-tools">
                     <div>
+                    <!-- <img src="/src/img/logo.jpg" alt="logo" width="50" height="50"> -->
                          <b class="font-black">JoCyberGo</b>
                     </div>
                 </div>

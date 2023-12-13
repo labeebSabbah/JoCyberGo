@@ -140,7 +140,7 @@
         <label class="label"><i class="mdi mdi-cash"></i> Total Price </label>
         <div class="control">
           <div class="control expanded">
-            <input id="total" readonly class="input" type="number" value="0">
+            <input id="total" name="total" class="input" type="number" value="0" readonly>
           </div>
         </div>
       </div>

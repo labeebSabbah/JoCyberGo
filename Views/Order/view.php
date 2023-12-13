@@ -1,22 +1,34 @@
+
+
+
+<style>
+  #logo {
+    border: none;
+    border-radius: 50%;
+}
+</style>
+
+
+
 <div class="bg-white rounded-lg shadow-lg px-8 py-10 max-w-xl mx-auto">
     <div class="flex items-center justify-between mb-8">
         <div class="flex items-center">
-            <img class="h-8 w-8 mr-2" src="https://tailwindflex.com/public/images/logos/favicon-32x32.png"
+            <img  src="/src/img/logo_1.png " width="180" height="180" id="logo"
                 alt="Logo" />
-            <div class="text-gray-700 font-semibold text-lg">JoCyberGo</div>
+            <!-- <div class="text-gray-700 font-semibold text-lg">JoCyberGo</div> -->
         </div>
         <div class="text-gray-700">
             <div class="font-bold text-xl mb-2">INVOICE</div>
-            <div class="text-sm">Date: 01/05/2023</div>
-            <div class="text-sm">Invoice #: INV12345</div>
+            <div class="text-sm">Date: <?php echo $order[0]['created_at'] ?></div>
+            <div class="text-sm">Invoice #: <?php echo $order[0]['id'] ?></div>
         </div>
     </div>
     <div class="border-b-2 border-gray-300 pb-8 mb-8">
-        <h2 class="text-2xl font-bold mb-4">Bill To:</h2>
-        <div class="text-gray-700 mb-2">John Doe</div>
-        <div class="text-gray-700 mb-2">123 Main St.</div>
-        <div class="text-gray-700 mb-2">Anytown, USA 12345</div>
-        <div class="text-gray-700">johndoe@example.com</div>
+        <h2 class="text-2xl font-bold mb-4">Bill To:</h2>       <!--#:<?php echo $order[0]['customer_id'] ?> -->
+        <div class="text-gray-700 mb-2">  <?php echo $order[0]['name'] ?></div>
+        <!-- <div class="text-gray-700 mb-2">123 Main St.</div>
+        <div class="text-gray-700 mb-2">Anytown, USA 12345</div> -->
+        <div class="text-gray-700"><?php echo $order[0]['email'] ?></div>
     </div>
     <table class="w-full text-left mb-8">
         <thead>
@@ -28,24 +40,14 @@
             </tr>
         </thead>
         <tbody>
+            <?php   foreach($order as $o):  ?>
             <tr>
-                <td class="py-4 text-gray-700">Product 1</td>
-                <td class="py-4 text-gray-700">1</td>
-                <td class="py-4 text-gray-700">$100.00</td>
-                <td class="py-4 text-gray-700">$100.00</td>
+                <td class="py-4 text-gray-700"> <?php echo $o['prod_name'] ?></td>
+                <td class="py-4 text-gray-700"><?php echo $o['amount'] ?></td>
+                <td class="py-4 text-gray-700"><?php echo $o['price'] ?>$</td>
+                <td class="py-4 text-gray-700"><?php echo $o['price']*$o['amount'] ?>$</td>
             </tr>
-            <tr>
-                <td class="py-4 text-gray-700">Product 2</td>
-                <td class="py-4 text-gray-700">2</td>
-                <td class="py-4 text-gray-700">$50.00</td>
-                <td class="py-4 text-gray-700">$100.00</td>
-            </tr>
-            <tr>
-                <td class="py-4 text-gray-700">Product 3</td>
-                <td class="py-4 text-gray-700">3</td>
-                <td class="py-4 text-gray-700">$75.00</td>
-                <td class="py-4 text-gray-700">$225.00</td>
-            </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
     <!-- <div class="flex justify-end mb-8">
@@ -59,7 +61,7 @@
     </div> -->  
     <div class="flex justify-end mb-8">
         <div class="text-gray-700 mr-2">Total:</div>
-        <div class="text-gray-700 font-bold text-xl">$450.50</div>
+        <div class="text-gray-700 font-bold text-xl"><?php echo $order[0]['total_price'] ?>$</div>
     </div>
     <!-- <div class="border-t-2 border-gray-300 pt-8 mb-8">
         <div class="text-gray-700 mb-2">Payment is due within 30 days. Late payments are subject to fees.</div>
@@ -69,13 +71,13 @@
     <div class="buttons flex justify-between nowrap">
         <form  action="/orders" method="POST">
             
-            <button title="back" class="button small blue --jb-modal" id="view" type="submit" name="id" value="<?php echo $order['id'] ?>">
+            <button title="back" class="button small blue --jb-modal" id="view" type="submit" name="id" >
                 <span class="icon"><i class="mdi mdi-arrow-left"></i></span>
             </button>
         </form>
         <form action="/order/delete" method="POST">
             
-            <button title="Delete" class="button small red --jb-modal" id="delete" type="submit" name="id" value="<?php   ?>">
+            <button title="Delete" class="button small red --jb-modal" id="delete" type="submit" name="id" value="<?php echo $order[0]['id']  ?>">
                 <span class="icon"><i class="mdi mdi-trash-can"></i></span>
             </button>
         </form>

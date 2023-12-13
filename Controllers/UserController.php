@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\User;
 
 use App\Models\Customer;
+use App\Models\Order;
 
 class UserController extends Controller {
     public function index() {
@@ -13,8 +14,10 @@ class UserController extends Controller {
 
     public function home() {
         $Customer = new Customer;
+        $Order = new Order;
         $customers = $Customer->all()->num_rows;
-        $this->render("home","Dashboard", ["customers" => $customers]);
+        $orders = $Order->all()->num_rows;
+        $this->render("home","Dashboard", ["customers" => $customers, "orders" => $orders]);
     }
 
     public function login() {

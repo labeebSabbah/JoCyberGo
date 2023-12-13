@@ -38,6 +38,9 @@ $router->addRoute('/productionline', ProductionLineController::class,'index');
 
 $router->addRoute("/test", ThingworxController::class, "test");
 $router->addRoute("/test1", ThingworxController::class, "test1");
+$router->addRoute("/fw", ThingworxController::class, "full_white");
+$router->addRoute("/fb", ThingworxController::class, "full_black");
+$router->addRoute("/reset", ThingworxController::class, "reset");
 
 
 $router->dispatch($uri);

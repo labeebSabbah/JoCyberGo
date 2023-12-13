@@ -49,6 +49,7 @@ if (!isset($_SESSION['user'])){
               </label>
             </th> -->
             <!-- <th class="image-cell"></th> -->
+            <th>#</th>
             <th>Name</th>
             <th>Email</th>
             
@@ -68,6 +69,7 @@ if (!isset($_SESSION['user'])){
                 <!-- <img src="https://avatars.dicebear.com/v2/initials/rebecca-bauch.svg" class="rounded-full"> -->
               <!-- </div> -->
             <!-- </td> -->
+            <td data-label="id"><?php echo $customer["id"]; ?></td>
             <td data-label="Name"><?php echo $customer["name"]; ?></td>
             <td data-label="Email"><?php echo $customer["email"]; ?></td>
             <!-- <td class="actions-cell">

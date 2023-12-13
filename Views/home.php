@@ -67,7 +67,7 @@ if (!isset($_SESSION['user'])) {
                 New Orders
               </h3>
               <h1>
-                256
+                <?php echo $orders ?>
               </h1>
             </div>
             <span class="icon widget-icon text-red-500"><i class="mdi mdi-finance mdi-48px"></i></span>

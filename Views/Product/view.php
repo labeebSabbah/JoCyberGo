@@ -9,7 +9,7 @@
     <form method="POST" action="/product/update" enctype="multipart/form-data">
 
       <input type="hidden" name="id" value="<?php echo $product['id'] ?>">
-      <input type="hidden" name="old_img" value="<?php echo $product['img'] ?>">
+      <input type="hidden" name="old_img" value="<?php echo $product['img'] ?>" width="300" height="300">
 
       <img src="<?php echo $product['img'] ?>" alt="">
 
