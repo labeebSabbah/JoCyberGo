@@ -46,7 +46,8 @@ class ThingworxController extends Controller
         curl_close($ch);
     }
 
-    public function full_white() {
+    public function full_white()
+    {
         $ch = curl_init(Thingworx::$fullWhite);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -61,34 +62,15 @@ class ThingworxController extends Controller
 
         sleep(1);
 
-        $ch = curl_init(Thingworx::$add);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'appKey: ' . Thingworx::$key,
-            'Content-Type: application/json',
-            'Accept: application/json'
-        ]);
-
-        $response = curl_exec($ch);
-        curl_close($ch);
+        $this->add();
 
         sleep(1);
 
-        $ch = curl_init(Thingworx::$start);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'appKey: ' . Thingworx::$key,
-            'Content-Type: application/json',
-            'Accept: application/json'
-        ]);
-
-        $response = curl_exec($ch);
-        curl_close($ch);
+        $this->start();
     }
 
-    public function full_black() {
+    public function full_black()
+    {
         $ch = curl_init(Thingworx::$fullBlack);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -103,6 +85,15 @@ class ThingworxController extends Controller
 
         sleep(1);
 
+        $this->add();
+
+        sleep(1);
+
+        $this->start();
+    }
+
+    public function add()
+    {
         $ch = curl_init(Thingworx::$add);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -114,9 +105,10 @@ class ThingworxController extends Controller
 
         $response = curl_exec($ch);
         curl_close($ch);
+    }
 
-        sleep(1);
-
+    public function start()
+    {
         $ch = curl_init(Thingworx::$start);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -132,7 +124,7 @@ class ThingworxController extends Controller
 
     public function reset()
     {
-        $ch = curl_init(Thingworx::$start);
+        $ch = curl_init(Thingworx::$reset);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
