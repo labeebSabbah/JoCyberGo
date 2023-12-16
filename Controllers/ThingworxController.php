@@ -3,9 +3,17 @@
 namespace App\Controllers;
 
 use App\Config\Thingworx;
+use App\Models\ProductionLine;
 
 class ThingworxController extends Controller
 {
+
+    public function api() {
+        $json = file_get_contents('php://input');
+        $data = json_decode($json);
+        $PL = new ProductionLine;
+        $PL->i_wanna_die($data->value);
+    }
 
     public function test()
     {
@@ -46,9 +54,9 @@ class ThingworxController extends Controller
         curl_close($ch);
     }
 
-    public function full_white()
+    public function WWS()
     {
-        $ch = curl_init(Thingworx::$fullWhite);
+        $ch = curl_init(Thingworx::$WWS);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -69,9 +77,9 @@ class ThingworxController extends Controller
         $this->start();
     }
 
-    public function full_black()
+    public function WWR()
     {
-        $ch = curl_init(Thingworx::$fullBlack);
+        $ch = curl_init(Thingworx::$WWR);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
@@ -91,6 +99,146 @@ class ThingworxController extends Controller
 
         $this->start();
     }
+
+    public function WBS()
+    {
+        $ch = curl_init(Thingworx::$WBS);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'appKey: ' . Thingworx::$key,
+            'Content-Type: application/json',
+            'Accept: application/json'
+        ]);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        sleep(1);
+
+        $this->add();
+
+        sleep(1);
+
+        $this->start();
+    }
+
+    public function WBR()
+    {
+        $ch = curl_init(Thingworx::$WWS);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'appKey: ' . Thingworx::$key,
+            'Content-Type: application/json',
+            'Accept: application/json'
+        ]);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        sleep(1);
+
+        $this->add();
+
+        sleep(1);
+
+        $this->start();
+    }
+
+    public function BBR()
+    {
+        $ch = curl_init(Thingworx::$BBR);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'appKey: ' . Thingworx::$key,
+            'Content-Type: application/json',
+            'Accept: application/json'
+        ]);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        sleep(1);
+
+        $this->add();
+
+        sleep(1);
+
+        $this->start();
+    }
+
+    public function BBS()
+    {
+        $ch = curl_init(Thingworx::$BBS);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'appKey: ' . Thingworx::$key,
+            'Content-Type: application/json',
+            'Accept: application/json'
+        ]);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        sleep(1);
+
+        $this->add();
+
+        sleep(1);
+
+        $this->start();
+    }
+
+    public function BWS()
+    {
+        $ch = curl_init(Thingworx::$BWS);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'appKey: ' . Thingworx::$key,
+            'Content-Type: application/json',
+            'Accept: application/json'
+        ]);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        sleep(1);
+
+        $this->add();
+
+        sleep(1);
+
+        $this->start();
+    }
+
+    public function BWR()
+    {
+        $ch = curl_init(Thingworx::$BWR);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'appKey: ' . Thingworx::$key,
+            'Content-Type: application/json',
+            'Accept: application/json'
+        ]);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        sleep(1);
+
+        $this->add();
+
+        sleep(1);
+
+        $this->start();
+    }
+
+
 
     public function add()
     {

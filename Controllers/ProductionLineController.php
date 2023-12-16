@@ -8,10 +8,9 @@ class ProductionLineController extends Controller {
 
     public function index()
     {
-        $products = new ProductionLine;
-        // $products = $products->all();
-        $products = NULL;
-        $this->render('productionLine', "Production Line",['products' => $products]);
+        $orders1 = new ProductionLine;
+        $orders1 = $orders1->all();
+        $this->render('productionLine', "Production Line",['orders1' => $orders1]);
     }
 
 }
