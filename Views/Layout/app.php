@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/src/css/main.css">
-    <link rel="icon" type="image/png" href="/src/img/logo.png" >
+    <link rel="icon" type="image/png" href="/src/img/logo.jpg" >
     <script src="/src/js/jquery-3.7.1.min.js"></script>
     <title>
         <?php echo $title ?>
@@ -83,9 +83,43 @@
                         <li class="<?php if ($uri == "/customers")
                             echo 'active' ?>">
                                 <a href="/customers">
-                                    <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
+                                    <span class="icon"><i class="mdi mdi-account-group"></i></span>
                                     <span class="menu-item-label">Customers</span>
                                 </a>
+                            </li>
+
+                       
+
+
+                            <li class="<?php if (in_array($uri, ["/suppliers", "/supplier/order/create","/supplier/orders"]))
+                            echo 'active' ?>">
+                                <a class="dropdown">
+                                    <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
+                                    <span class="menu-item-label">Suppliers</span>
+                                    <?php if (in_array($uri, ["/orders", "/order/create"])): ?>
+                                    <span class="icon"><i class="mdi mdi-minus"></i></span>
+                                    <?php else: ?>
+                                    <span class="icon"><i class="mdi mdi-plus"></i></span>
+                                    <?php endif; ?>
+                                </a>
+                                    <ul>
+                                        <li >
+                                            <a href="/supplier/order/create">
+                                                <span class="menu-item-label">    New Purchase Order</span>
+                                             </a>
+                                        </li>
+                                        <li >
+                                            <a href="/suppliers">
+                                                <span class="menu-item-label">     Suppliers List</span>
+                                             </a>
+                                        </li>
+                                        <li >
+                                            <a href="/supplier/orders">
+                                                <span class="menu-item-label">     Purchase Order List</span>
+                                             </a>
+                                        </li>
+          
+                                    </ul>
                             </li>
 
 
@@ -143,11 +177,22 @@
                                     </ul>
                              </li>
 
+
+
+
+                             <li class="<?php if ($uri == "/")
+                            echo 'active' ?>">
+                                <a href="/customers">
+                                    <span class="icon"><i class="mdi mdi-store"></i></span>
+                                    <span class="menu-item-label">Storage</span>
+                                </a>
+                            </li>
+
     
                              <li class="<?php if ($uri == "/productionline")
                             echo 'active' ?>">
                                 <a href="/productionline">
-                                    <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
+                                    <span class="icon"><i class="mdi mdi-robot-industrial"></i></span>
                                     <span class="menu-item-label">Production Line</span>
                                 </a>
                             </li>

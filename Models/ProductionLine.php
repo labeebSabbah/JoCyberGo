@@ -11,7 +11,7 @@ class ProductionLine extends Model
     public function all() {
         $stmt = $this->conn->prepare(" SELECT orders.*, customers.name, product_orders.product_id, product_orders.amount, products.name as prod_name FROM `orders`
         INNER JOIN (`product_orders` INNER JOIN `products` ON `product_orders`.product_id= `products`.id) ON `orders`.id = `product_orders`.order_id
-        INNER JOIN `customers` ON `orders`.customer_id = `customers`.id ORDER BY id DESC;       
+        INNER JOIN `customers` ON `orders`.customer_id = `customers`.id;       
         ");
         $stmt->execute();
         $result = $stmt->get_result();

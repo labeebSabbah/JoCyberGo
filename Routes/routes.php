@@ -8,6 +8,7 @@ use App\Controllers\ProductController;
 use App\Controllers\OrderController;
 use App\Controllers\ProductionLineController;
 use App\Controllers\ThingworxController;
+use App\Controllers\SuppliersController;
 
 $router = new Router();
 
@@ -36,6 +37,13 @@ $router->addRoute('/order/delete', OrderController::class, "delete");
 
 $router->addRoute('/productionline', ProductionLineController::class,'index');
 
+$router->addRoute('/suppliers', SuppliersController::class,'index');
+$router->addRoute('/supplier/create', SuppliersController::class,'create');
+$router->addRoute('/supplier/store', SuppliersController::class,'store');
+
+$router->addRoute('/supplier/orders', SuppliersController::class,'supplier_orders');
+$router->addRoute('/supplier/order/create', SuppliersController::class,'supplier_order_create');
+
 // $router->addRoute("/test", ThingworxController::class, "test");
 // $router->addRoute("/test1", ThingworxController::class, "test1");
 
@@ -50,7 +58,8 @@ $router->addRoute('/productionline', ProductionLineController::class,'index');
 
 // $router->addRoute("/reset", ThingworxController::class, "reset");
 
-$router->addRoute("/api", ThingworxController::class, "api");
+// $router->addRoute("/api", ThingworxController::class, "api");
+$router->addRoute("/api/setQueue", ProductionLineController::class, "setQueue");
 
 
 $router->dispatch($uri);

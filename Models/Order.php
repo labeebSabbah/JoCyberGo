@@ -17,10 +17,7 @@ class Order extends Model
 
     public function all()
     {
-        $stmt = $this->conn->prepare("
-        SELECT orders.*, customers.name FROM `orders`
-        INNER JOIN `customers` ON `orders`.customer_id = `customers`.id
-        ");
+        $stmt = $this->conn->prepare(" SELECT *  FROM  all_order ORDER BY id");
         $stmt->execute();
         $result = $stmt->get_result();
         return $result;
@@ -39,12 +36,7 @@ class Order extends Model
     public function find($id)
     {
         $Order = new Order;
-        $stmt = $Order->conn->prepare("
-        SELECT orders.*, customers.name, customers.email,customers.id as customer_id, product_orders.product_id, product_orders.amount, products.name as prod_name, products.price FROM `orders`
-        INNER JOIN (`product_orders` INNER JOIN `products` ON `product_orders`.product_id= `products`.id) ON `orders`.id = `product_orders`.order_id
-        INNER JOIN `customers` ON `orders`.customer_id = `customers`.id
-        WHERE `orders`.id = ?;        
-        ");
+        $stmt = $Order->conn->prepare(" SELECT * FROM find_order WHERE id = ?; ");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -59,5 +51,14 @@ class Order extends Model
         $stmt = $this->conn->prepare("DELETE FROM orders WHERE id = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
+    }
+
+
+    public function total(){
+
+        $stmt = $this->conn->prepare("SELECT SUM(total_price) AS total_sum FROM orders;");
+        $stmt->execute();
+        return $stmt->get_result()->fetch_assoc();
+
     }
 }

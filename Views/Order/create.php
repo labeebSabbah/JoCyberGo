@@ -59,8 +59,8 @@
         <label class="label"><i class="mdi mdi-account-multiple"></i> Customer Name</label>
         <div class="control">
           <div class="select">
-            <select name="customer">
-              <option value="" selected>Choose the customer...</option>
+            <select name="customer" required>
+              <option value="" selected >Choose the customer...</option>
               <?php foreach ($customers as $customer) : ?>
                 <option value="<?php echo $customer['id'] ?>"><?php echo $customer['name'] ?></option>
               <?php endforeach; ?>

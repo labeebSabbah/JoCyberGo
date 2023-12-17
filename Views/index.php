@@ -10,6 +10,14 @@ if (isset($_SESSION['user'])) {
     border: none;
     border-radius: 50%;
 }
+
+  img {
+    margin: 0 auto;
+  }
+
+  body {
+    padding-top: 0;
+  }
 </style>
 
 <center>
@@ -18,13 +26,13 @@ if (isset($_SESSION['user'])) {
   <section class="section main-section md:w-10/12">
     <div class="card">
       <header class="card-header">
-        <p class="card-header-title">
-          <img id="logo" src="/src/img/logo_1.png" width="100" height="100"  >
+        <p class="card-header-title mb-0 pb-0">
+          <img id="logo" src="/src/img/logo_1.png" width="300" height="300"  >
           <!-- <span class="icon"><i class="mdi mdi-lock"></i></span>
           Login -->
         </p>
       </header>
-      <div class="card-content">
+      <div class="card-content mt-0 pt-1">
         <form method="POST" action="login">
 
           <div class="field spaced">

@@ -8,9 +8,16 @@ class ProductionLineController extends Controller {
 
     public function index()
     {
-        $orders1 = new ProductionLine;
-        $orders1 = $orders1->all();
-        $this->render('productionLine', "Production Line",['orders1' => $orders1]);
+        $PL = new ProductionLine;
+        $orders = $PL->all();
+        $this->render('productionLine', "Production Line",['orders' => $orders]);
+    }
+
+    public function setQueue()
+    {
+        $PL = new ProductionLine;
+        $queue = $_POST['queue'];
+        print_r($queue);
     }
 
 }

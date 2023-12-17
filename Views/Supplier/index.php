@@ -3,19 +3,24 @@ if (!isset($_SESSION['user'])){
     header('location:/');
 }
 ?>
+
 <section class="is-title-bar">
   <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
     <ul>
       <li>Admin</li>
-      <li>Orders</li>
+      <li>Suppliers</li>
     </ul>
+    <!-- <a href="https://github.com/justboil/admin-one-tailwind" target="_blank" class="button blue">
+      <span class="icon"><i class="mdi mdi-github-circle"></i></span>
+      <span>GitHub</span>
+    </a> -->
   </div>
 </section>
 
 <!-- <section class="is-hero-bar">
   <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
     <h1 class="title">
-      Orders Table
+      Customers Table
     </h1>
     <button class="button light">Button</button>
   </div>
@@ -26,15 +31,15 @@ if (!isset($_SESSION['user'])){
       <header class="card-header">
         <p class="card-header-title">
           <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
-          Orders
+          Suppliers
         </p>
-        <a href="/orders" class="card-header-icon">
+        <a href="suppliers" class="card-header-icon">
           <span class="icon"><i class="mdi mdi-reload"></i></span>
         </a>
       </header>
       <div class="card-content">
-      <table>
-        <?php if($orders): ?>
+        <table>
+        <?php if($suppliers): ?>
           <thead>
           <tr>
             <!-- <th class="checkbox-cell">
@@ -43,19 +48,15 @@ if (!isset($_SESSION['user'])){
                 <span class="check"></span>
               </label>
             </th> -->
+            <!-- <th class="image-cell"></th> -->
             <th>#</th>
-            <th>Date </th>
-            <th>Customer #</th>
-            <th>Customer Name </th>
-            <th>Price </th>
-            <th>Status </th>
-
-            <th>View</th>
+            <th>Name</th>
+            <th>Email</th>
             
           </tr>
           </thead>
           <tbody>
-            <?php foreach($orders as $order): ?>
+            <?php foreach($suppliers as $supplier): ?>
           <tr>
             <!-- <td class="checkbox-cell">
               <label class="checkbox">
@@ -63,26 +64,24 @@ if (!isset($_SESSION['user'])){
                 <span class="check"></span>
               </label>
             </td> -->
-            <td data-label="Customer Name"><?php echo $order["id"]; ?></td>
-            <td data-label="Customer Name"><?php echo $order["created_at"]; ?></td>
-            <td data-label="Customer Name"><?php echo $order["customer_id"]; ?></td>
-            <td data-label="Toatal Price"><?php echo $order["name"]; ?></td>
-            <td data-label="Created at"><?php echo $order["total_price"]; ?>$</td>
-            <td data-label="Created at"><?php echo $order["status"]; ?></td>
-
-
-            <td class="actions-cell">
-              <div class="buttons center nowrap">
-              <form  action="/order/view" method="POST">
-                <button title="View" class="button small blue --jb-modal" id="view" type="submit" name="id" value="<?php echo $order["id"]; ?>">
-                     <span class="icon"><i class="mdi mdi-eye"></i></span>
+            <!-- <td class="image-cell"> -->
+              <!-- <div class="image"> -->
+                <!-- <img src="https://avatars.dicebear.com/v2/initials/rebecca-bauch.svg" class="rounded-full"> -->
+              <!-- </div> -->
+            <!-- </td> -->
+            <td data-label="id"><?php echo $supplier["id"]; ?></td>
+            <td data-label="Name"><?php echo $supplier["name"]; ?></td>
+            <td data-label="Email"><?php echo $supplier["email"]; ?></td>
+            <!-- <td class="actions-cell">
+              <div class="buttons right nowrap">
+                <button class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
+                  <span class="icon"><i class="mdi mdi-eye"></i></span>
                 </button>
-              </form>
-                <!-- <button class="button small red --jb-modal" data-target="sample-modal" type="button">
+                <button class="button small red --jb-modal" data-target="sample-modal" type="button">
                   <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-                </button> -->
+                </button>
               </div>
-            </td>
+            </td> -->
           </tr>
           <?php endforeach; ?>
           </tbody>
