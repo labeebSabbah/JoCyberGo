@@ -32,13 +32,13 @@ if (!isset($_SESSION['user'])){
       </header>
       <div class="card-content">
         <table>
-        <?php if($customers): ?>
+        <?php if($customers->num_rows != 0): ?>
           <thead>
           <tr>
             
             <th>#</th>
-            <th>Name</th>
-            <th>Email</th>
+            <th><i class="mdi mdi-account"></i>Name</th>
+            <th><i class="mdi mdi-email-outline"></i>Email</th>
             
           </tr>
           </thead>

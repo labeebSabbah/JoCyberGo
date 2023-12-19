@@ -13,14 +13,30 @@ class ProductionLineController extends Controller {
     {
         $PL = new ProductionLine;
         $orders = $PL->all();
-        $this->render('productionLine', "Production Line",['orders' => $orders]);
+        $running = $PL ->status_running();
+        $this->render('productionLine', "Production Line",['orders' => $orders,'running'=>$running]);
     }
 
-    public function setQueue()
-    {
+    // public function setQueue()
+    // {
+    //     $PL = new ProductionLine;
+    //     $queue = $_POST['queue'];
+    //     $PL->queue($queue);
+    // }
+
+
+    public function change_status(){
+        $id = $_POST["id"];
+
+        $pl = new ProductionLine;
+        $pl->changeStatus($id); 
+    }
+
+    public function check_station() {
+        $id = $_POST["id"];
         $PL = new ProductionLine;
-        $queue = $_POST['queue'];
-        $PL->queue($queue);
+        $station = $PL->check_station($id);
+        echo $station;
     }
 
 }

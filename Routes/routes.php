@@ -4,6 +4,7 @@ use App\Config\Thingworx;
 use App\Routes\Router;
 use App\Controllers\UserController;
 use App\Controllers\CustomerController;
+use App\Controllers\EmployeeController;
 use App\Controllers\ProductController;
 use App\Controllers\OrderController;
 use App\Controllers\ProductionLineController;
@@ -18,6 +19,18 @@ $router->addRoute('/home', UserController::class,'home');
 $router->addRoute('/logout', UserController::class,'logout');
 $router->addRoute('/profile', UserController::class,'profile');
 $router->addRoute('/profile/update', UserController::class, 'update');
+
+
+$router->addRoute('/employees', EmployeeController::class, 'index');
+$router->addRoute('/employee/create', EmployeeController::class, 'create');
+$router->addRoute('/employee/store', EmployeeController::class, 'store');
+$router->addRoute('/employee', EmployeeController::class, 'view');
+$router->addRoute('/employee/delete', EmployeeController::class, 'delete');
+$router->addRoute('/employee/update', EmployeeController::class, 'update');
+
+
+
+
 
 $router->addRoute('/customers', CustomerController::class,'index');
 $router->addRoute('/customers/create', CustomerController::class,'create');
@@ -63,9 +76,11 @@ $router->addRoute('/purchaseOrder/update', SuppliersController::class,'purchase_
 
 
 $router->addRoute('/stock-control', SuppliersController::class, 'stock_control');
+$router->addRoute("/change_status", ProductionLineController::class, "change_status");
+$router->addRoute("/order/complete", OrderController::class, "complete");
 
-// $router->addRoute("/test", ThingworxController::class, "test");
-// $router->addRoute("/test1", ThingworxController::class, "test1");
+$router->addRoute("/test", ThingworxController::class, "test");
+$router->addRoute("/test1", ThingworxController::class, "test1");
 
 // $router->addRoute("/bbr", ThingworxController::class, "BBR");
 // $router->addRoute("/bbs", ThingworxController::class, "BBS");
@@ -79,8 +94,9 @@ $router->addRoute('/stock-control', SuppliersController::class, 'stock_control')
 // $router->addRoute("/reset", ThingworxController::class, "reset");
 
 // $router->addRoute("/api", ThingworxController::class, "api");
+$router->addRoute("/api/check_station", ProductionLineController::class, "check_station");
 
-$router->addRoute("/api/setQueue", ProductionLineController::class, "setQueue");
+// $router->addRoute("/api/setQueue", ProductionLineController::class, "setQueue");
 
 
 $router->dispatch($uri);

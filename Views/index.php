@@ -20,9 +20,9 @@ if (isset($_SESSION['user'])) {
   }
 </style>
 
-<center>
+<!-- <center>
 
-  </center>
+  </center> -->
   <section class="section main-section md:w-10/12">
     <div class="card">
       <header class="card-header">
@@ -33,12 +33,12 @@ if (isset($_SESSION['user'])) {
         </p>
       </header>
       <div class="card-content mt-0 pt-1">
-        <form method="POST" action="login">
+        <form method="POST" action="/login">
 
           <div class="field spaced">
             <label class="label">Username</label>
             <div class="control icons-left">
-              <input class="input" type="text" name="username" placeholder="" autocomplete="username" required>
+              <input class="input" type="text" name="username" placeholder="Username" autocomplete="username" required>
               <span class="icon is-small left"><i class="mdi mdi-account"></i></span>
             </div>
             <p class="help">

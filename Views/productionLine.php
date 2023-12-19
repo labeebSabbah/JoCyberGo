@@ -1,5 +1,6 @@
 <style>
-  #items {
+  #items,
+  #items1 {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
@@ -9,17 +10,43 @@
     gap: 10px;
   }
 
-  #items li {
+  #items li,
+  #items1 li {
     width: 80% !important;
     border-radius: 2%;
     padding: 10px;
     width: 350px;
     color: white;
     font-size: large;
-    background-color: #1f2937;
     word-wrap: break-word;
   }
 </style>
+
+
+
+<ul id="items1">
+  <?php foreach ($running as $running1): ?>
+    <li class="bg-blue-400" id="<?php echo $running1['prod_ord_id'] ?>" data-station="<?php echo $running1['station'] ?>" data-id="<?php echo $running1['id'] ?>"
+      class="rounded-t-lg">#
+      <?php echo $running1["id"]; ?> | Customer name =
+      <?php echo $running1["name"]; ?> | Product Name =
+      <?php echo $running1["prod_name"]; ?> | Amount=
+      <?php echo $running1["amount"]; ?> | Total=
+      <?php echo $running1["total_price"]; ?>$
+    </li>
+  <?php endforeach; ?>
+
+
+
+</ul>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 
 <div class="p-5">
   <div class="mx-4 p-4">
@@ -214,7 +241,16 @@
 
 <ul id="items">
   <?php foreach ($orders as $order): ?>
-    <li id="<?php echo $order['prod_ord_id'] ?>" class="rounded-t-lg">#
+    <li class="
+      <?php
+        switch($order['priority']) {
+          case 1: echo 'bg-red-600'; break;
+          case 2: echo 'bg-yellow-600'; break;
+          case 3: echo 'bg-gray-600'; break;
+        }
+      ?>
+    " id="<?php echo $order['prod_ord_id'] ?>" data-combination="<?php echo $order['combination'] ?>" data-id="<?php echo $order['id'] ?>"
+      class="rounded-t-lg">#
       <?php echo $order["id"]; ?> | Customer name =
       <?php echo $order["name"]; ?> | Product Name =
       <?php echo $order["prod_name"]; ?> | Amount=
@@ -227,40 +263,36 @@
 
 <script src="/node_modules/sortablejs/Sortable.min.js"></script>
 <script>
-  let q = [];
   var el = document.getElementById('items');
   var sortable = new Sortable(el, {
-    animation: 150,
-    onSort: function (e) {
-      q = [];
-      for (const child of el.children) {
-        q.push(child.id);
-      }
-      setQueue();
-    }
+    animation: 150
   });
-
-  function setQueue() {
-    $.ajax({
-      url: "/api/setQueue",
-      method: "POST",
-      data: {
-        "queue": q
-      },
-      success: function (response) {
-      },
-      error: function () {
-        alert("Fail");
-      }
-    });
-  }
 
   let x = 0;
   let progress = null;
   let checker = false;
   let clicked = false;
-
+  var station = "";
+  if (document.getElementById('items1').children.length !== 0) {
+    station = document.getElementById("items1").firstChild.nextSibling.dataset.station;
+  } else {
+    station = 0;
+  }
+  station = parseInt(station);
+  var order_id = "";
+  var ord_id = "";
+  if (station != 0) {
+    order_id = document.getElementById("items1").firstChild.nextSibling.id;
+    ord_id = document.getElementById("items1").firstChild.nextSibling.dataset.id;
+    progressInterval(station);
+  } else {
+    order_id = document.getElementById("items").firstChild.nextSibling.id;
+    ord_id = document.getElementById("items").firstChild.nextSibling.dataset.id;
+  }
+  order_id = parseInt(order_id);
+  ord_id = parseInt(ord_id);
   function animate(id) {
+
 
     let bar = document.getElementById(`station${id}`);
     let logo = document.getElementById(`station${id}_logo`);
@@ -270,8 +302,10 @@
       logo.classList.add("bg-teal-600");
       text.classList.remove("text-gray-500");
       text.classList.add("text-teal-600");
+      document.getElementById(`station${id - 1}`).style.width = "100%";
       clearInterval(progress);
       clicked = false;
+      reset();
       return;
     }
 
@@ -298,9 +332,6 @@
       checker = true;
     }
 
-    x++;
-    bar.style.width = x + "%";
-
     if (x === 100) {
       bar.classList.remove("bg-blue-600");
       bar.classList.add("bg-teal-600");
@@ -310,32 +341,116 @@
       clearInterval(progress);
       progressInterval(id + 1);
     }
+
+    $.ajax({
+      url: "/api/check_station",
+      method: "POST",
+      data: {
+        id: `${order_id}`
+      },
+      success: function (response) {
+        if (response == (station + 1)) {
+          x = 100;
+          station = station + 1;
+          bar.style.width = x + "%";
+        }
+      },
+      error: function (response) {
+        alert("error");
+      }
+    });
+
+    if (x == 100) {
+      return;
+    }
+
+    if (x != 95) {
+      x++;
+      bar.style.width = x + "%";
+    }
   }
 
   function progressInterval(id) {
-    if (id == 6) { return; }
-    progress = setInterval(() => { animate(id); }, 100);
+    let stop = false;
+    console.log(id)
+    if (id == 5) { 
+      $.ajax({
+        url: "/order/complete",
+        method: "POST",
+        data: {
+          id: `${ord_id}`
+        },
+        success: function (response) {
+          document.getElementById("items1").firstChild.nextSibling.remove();
+          clearInterval(progress);
+          clicked = false;
+          stop = true;
+          reset();
+        },
+        error: function (response) {
+          alert("error");
+        }
+      });
+    }
+    if (!stop) {
+      progress = setInterval(() => { animate(id); }, 200);
+    } else {
+      reset();
+    }
   }
 
   function start() {
-    if (clicked) {
+    if (clicked || document.getElementById('items1').children.length !== 0) {
+      alert("Count error");
       return;
     }
+    station = 1;
+    order_id = document.getElementById("items").firstChild.nextSibling.id;
+    ord_id = document.getElementById("items").firstChild.nextSibling.dataset.id;
+    let li = document.createElement("li");
+    li.setAttribute("id", `${document.getElementById("items").firstChild.nextSibling.id}`);
+    li.setAttribute("data-id", `${document.getElementById("items").firstChild.nextSibling.dataset.id}`);
+    li.setAttribute("class", "bg-blue-400");
+    li.appendChild(document.createTextNode(`${document.getElementById("items").firstChild.nextSibling.innerHTML}`));
+    document.getElementById("items1").appendChild(li);
     $.ajax({
-      url: "/wwr",
+      url: "/change_status",
       method: "POST",
       data: {
-        "id": `${document.getElementById("items").firstChild.nextSibling.id}`
+        "id": `${ord_id}`
       },
       success: function (response) {
-        reset();
         clicked = true;
-        progressInterval(1);
       },
       error: function () {
         alert("error");
       }
     });
+
+    // $.ajax({
+    //   url: "/" + document.getElementById("items").firstChild.nextSibling.dataset.combination,
+    //   method: "POST",
+    //   data: {
+    //     "id": `${document.getElementById("items").firstChild.nextSibling.id}`
+    //   },
+    //   success: function (response) {
+    //     reset();
+    //     clicked = true;
+    //     progressInterval(1);
+    //   },
+    //   error: function () {
+    //     alert("error");
+    //   }
+    // });
+
+    reset();
+    clicked = true;
+    progressInterval(1);
+
+
+    let s = document.getElementById("items").firstChild.nextSibling;
+    s.remove();
+    reset();
   }
 
   function reset() {
@@ -357,6 +472,7 @@
       }
     }
   }
+
 </script>
 
 <footer class="footer">

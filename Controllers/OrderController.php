@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Order;
 use App\Models\Customer;
+use App\Models\Employee;
 use App\Models\Product;
 use App\Models\ProductOrder;
 
@@ -27,18 +28,26 @@ class OrderController extends Controller
     {
         $Customer = new Customer;
         $Product = new Product;
+        $Employee = new Employee;
+        $priorities = [1, 2, 3];
         $customers = $Customer->all();
         $products = $Product->all();
-        $this->render("Order/create", "New Order", ["customers" => $customers, "products" => $products]);
+        $employees = $Employee->all();
+        $this->render("Order/create", "New Order", [
+            "customers" => $customers, "products" => $products,
+            "priorities" => $priorities, "employees" => $employees
+        ]);
     }
     /**
      * Stores the submited information from the create view in the database 
      * @return void
      */
     public function store() {
+        
         $Order = new Order;
+        $Product = new Product;
         $ProductOrder = new ProductOrder;
-        $order_id = $Order->create($_POST["customer"], $_POST["total"]);
+        $order_id = $Order->create($_POST["customer"], $_POST["total"], $_POST["priority"], $_POST["employee_id"]);
         $temp = explode(",", $_POST['products']);
         $products  = [];
         foreach ($temp as $id) {
@@ -49,6 +58,11 @@ class OrderController extends Controller
             $products[$id] = 1;
         }
         print_r($products);
+        if (!$Product->quantity_update($products)) {
+            $_SESSION["error"] = "Quantity Not Enough";
+            header("Location: /order/create");
+            exit();
+        }
         foreach ($products as $product_id => $amount) {
             $ProductOrder->create($order_id, $product_id, $amount);
         }
@@ -72,7 +86,9 @@ class OrderController extends Controller
      */
     public function complete()
     {
-        header("Location: /orders");
+        $Order = new Order;
+        $Order->complete($_POST['id']);
+        echo "success";
     }
     /**
      * delete the order

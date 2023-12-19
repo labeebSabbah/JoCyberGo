@@ -23,7 +23,7 @@ if (!isset($_SESSION['user'])){
     <div class="card has-table">
       <header class="card-header">
         <p class="card-header-title">
-          <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
+          <span class="icon"><i class="mdi mdi-package-variant-closed"></i></span>
           Products
         </p>
         <a href="/products" class="card-header-icon">
@@ -32,7 +32,7 @@ if (!isset($_SESSION['user'])){
       </header>
       <div class="card-content">
       <table>
-        <?php if($products): ?>
+      <?php if($products->num_rows != 0): ?>
           <thead>
           <tr>
             <!-- <th class="checkbox-cell">
@@ -43,8 +43,8 @@ if (!isset($_SESSION['user'])){
             </th> -->
             <th>#</th>
 
-            <th>Name</th>
-            <th>Price</th>
+            <th><i class="mdi mdi-car"></i>Name</th>
+            <th><i class="mdi mdi-currency-usd"></i>Price</th>
             <th></th>
           </tr>
           </thead>

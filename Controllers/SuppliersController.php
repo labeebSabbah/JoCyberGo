@@ -28,14 +28,14 @@ class SuppliersController extends Controller {
         $Supplier = new Supplier;
         $Supplier->create($name, $email,$phone);
 
-        $_SESSION["success"] =  "Customer Deleted Successfuly"; 
+        $_SESSION["success"] =  "Supplier Created Successfuly"; 
         header("Location: /suppliers");
     }
 
     public function supplier_orders() {
         $SO = new PurchaseOrder;
         $orders = $SO->all();
-        $this->render("PurchaseOrder/index", "Perchase Order List", ["orders" => $orders]);
+        $this->render("PurchaseOrder/index", "Perchase Orders List", ["orders" => $orders]);
     }
 
     public function supplier_order_create() {
@@ -46,7 +46,7 @@ class SuppliersController extends Controller {
             $products = $product->all();
 
 
-        $this->render("PurchaseOrder/create", "Order supplyment", ["suppliers" => $suppliers,"products"=>$products]);
+        $this->render("PurchaseOrder/create", "Purchase Order Create", ["suppliers" => $suppliers,"products"=>$products]);
     }
 
 
@@ -75,7 +75,7 @@ class SuppliersController extends Controller {
         $product ->update_quantity($quantity,$product_id);
 
         $_SESSION["success"] =  "Order Created Successfuly";
-        header("Location: /purchaseOrder");
+        header("Location: /purchaseOrders");
 
     }
 
@@ -108,7 +108,7 @@ class SuppliersController extends Controller {
         $supplier = new Supplier;
         $supplier->update($name,$email,$phone,$id);
 
-        $_SESSION["success"] =  "Supplier Deleted Successfuly";
+        $_SESSION["success"] =  "Supplier Updated Successfuly";
         header("Location: /suppliers");
 
     }
@@ -140,7 +140,7 @@ class SuppliersController extends Controller {
         $product = new Product;
         $product = $product->find($product_id);
         
-        $this->render("PurchaseOrder/view", "View purchaseOrder", ["purchesOrderItems" => $purchesOrderItems,"product" => $product]);
+        $this->render("PurchaseOrder/view", "View purchase Order", ["purchesOrderItems" => $purchesOrderItems,"product" => $product]);
     }
 
 
@@ -152,6 +152,12 @@ class SuppliersController extends Controller {
         $stock_quantity = $_POST["stock_quantity"];
         $old_quantity = $_POST["old_quantity"];
         $quantity = $_POST["quantity"];
+
+        if ($quantity <= 0) {
+            $_SESSION["error"] = "Quantity must be more than 0.";
+            header("Location: /purchaseOrders");
+            exit;
+           }
 
 
 

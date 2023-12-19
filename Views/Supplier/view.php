@@ -2,7 +2,7 @@
   <header class="card-header">
     <p class="card-header-title">
       <span class="icon"><i class="mdi mdi-ballot"></i></span>
-      Customer View
+      Supplier View
     </p>
   </header>
   <div class="card-content">
@@ -21,7 +21,7 @@
       </div>
       <br>
       <div>
-        <label class="label"><i class="mdi mdi-cash"></i> Email </label>
+        <label class="label"><i class="mdi mdi-email-outline"></i> Email </label>
         <div class="control">
           <div class="control expanded">
             <input class="input" type="text" value="<?php echo $supplier['email'] ?>" name="email" >
@@ -30,7 +30,7 @@
       </div>
       <br>
       <div>
-        <label class="label"><i class="mdi mdi-cash"></i> Phone </label>
+        <label class="label"><i class="mdi mdi-phone"></i> Phone </label>
         <div class="control">
           <div class="control expanded">
             <input class="input" type="text" value="<?php echo $supplier['phone'] ?>" name="phone" >

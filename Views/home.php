@@ -28,9 +28,11 @@ if (!isset($_SESSION['user'])) {
 
   <section class="section main-section">
     <div class="grid gap-6 grid-cols-1 md:grid-cols-3 mb-6">
-      <div class="card">
-        <div class="card-content">
-          <div class="flex items-center justify-between">
+      <a href="/customers">
+
+        <div class="card">
+          <div class="card-content">
+            <div class="flex items-center justify-between">
             <div class="widget-label">
               <h3>
                 Customers
@@ -43,6 +45,8 @@ if (!isset($_SESSION['user'])) {
           </div>
         </div>
       </div>
+    </a>
+      <a href="/orders">
       <div class="card">
         <div class="card-content">
           <div class="flex items-center justify-between">
@@ -58,13 +62,14 @@ if (!isset($_SESSION['user'])) {
           </div>
         </div>
       </div>
-
-      <div class="card">
-        <div class="card-content">
-          <div class="flex items-center justify-between">
-            <div class="widget-label">
-              <h3>
-                New Orders
+    </a>
+      <a href="/order/create">
+        <div class="card">
+          <div class="card-content">
+            <div class="flex items-center justify-between">
+              <div class="widget-label">
+                <h3>
+                  New Orders
               </h3>
               <h1>
                 <?php echo $orders ?>
@@ -74,6 +79,7 @@ if (!isset($_SESSION['user'])) {
           </div>
         </div>
       </div>
+    </a>
     </div>
 
     <!-- <div class="card mb-6">

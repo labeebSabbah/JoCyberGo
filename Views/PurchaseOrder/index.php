@@ -35,17 +35,17 @@ if (!isset($_SESSION['user'])){
       
       <div class="card-content">
         <table>
-        <?php if($orders): ?>
+        <?php if($orders->num_rows != 0): ?>
           <thead>
           <tr>
             
             <th>#</th>
-            <th>Date</th>
+            <th><i class="mdi mdi-calendar-range"></i>Date</th>
             <th>Supplier #</th>
-            <th>Supplier Name</th>
+            <th><i class="mdi mdi-account"></i>Supplier Name</th>
             <th>Product #</th>
-            <th>Product Name</th>
-            <th>Quantity</th>
+            <th><i class="mdi mdi-package-variant-closed"></i>Product Name</th>
+            <th><i class="mdi mdi-numeric"></i>Quantity</th>
 
             
           </tr>

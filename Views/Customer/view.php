@@ -21,7 +21,7 @@
       </div>
       <br>
       <div>
-        <label class="label"><i class="mdi mdi-cash"></i> Email </label>
+        <label class="label"><i class="mdi mdi-email-outline"></i> Email </label>
         <div class="control">
           <div class="control expanded">
             <input class="input" type="text" value="<?php echo $customer['email'] ?>" name="email" >

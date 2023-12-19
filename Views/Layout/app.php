@@ -124,6 +124,17 @@ $uri = $_SERVER["REQUEST_URI"];
 
 
 
+                                <li class="<?php if ($uri == "/employees")
+                                echo 'active' ?>">
+                                    <a href="/employees">
+                                        <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
+                                        <span class="menu-item-label">Employees</span>
+                                    </a>
+                                </li>
+
+
+
+
 
                                 <li class="<?php if (in_array($uri, ["/suppliers", "/supplier/order/create", "/supplier/orders"]))
                                 echo 'active' ?>">

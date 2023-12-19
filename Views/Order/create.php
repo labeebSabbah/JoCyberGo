@@ -29,22 +29,45 @@
           </div>
         </div>
       </div>
+<br>
+      <div>
+        <label class="label"><i class="mdi mdi-account"></i> Employee</label>
+        <div class="control">
+          <div class="select">
+          <select name="employee_id" required>
+              <option value="" selected >Choose the Employee...</option>
+              <?php foreach ($employees as $employee) : ?>
+                <option value="<?php echo $employee['id'] ?>"><?php echo $employee['name'] ?></option>
+              <?php endforeach; ?>
+            </select>
+          </div>
+        </div>
+      </div>
+<br>
+
+      <div>
+        <label class="label"><i class="mdi mdi-account"></i> Priority </label>
+        <div class="control">
+          <div class="select">
+          <select name="priority" required>
+              <option value="" selected >Choose the priority...</option>
+              <?php foreach ($priorities as $priority) : ?>
+                <option value="<?php echo $priority ?>"><?php echo $priority ?></option>
+              <?php endforeach; ?>
+            </select>
+          </div>
+        </div>
+      </div>
+
+
+
+     
 
       <br>
 
       <div>
         <label class="label"><i class="mdi mdi-package-variant-closed"></i> Products</label>
-        <!-- <div class="control">
-              <div class="select">
-                <select>
-                  <option value="" selected>Choose the product...</option>
-                  <option>Business development</option>
-                  <option>Marketing</option>
-                  <option>Sales</option>
-                </select>
-              </div>
-            </div> -->
-        <!-- This is an example component -->
+  
         <div class="w-full flex justify-center gap-5 flex-wrap">
 
           <?php foreach ($products as $product) : ?>
@@ -57,12 +80,9 @@
                 <a href="#">
                   <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white"><?php echo $product["name"] ?></h5>
                 </a>
-                <!-- <p class="font-normal text-gray-700 mb-3 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> -->
                 <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="addProduct(<?php echo $product['id'] ?>, '<?php echo $product['name'] ?>', <?php echo $product['price'] ?>)">
                   Add <i class="mdi mdi-plus"></i>
-                  <!-- <svg class="-mr-1 ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                </svg> -->
+               
                   </buton>
               </div>
             </div>
@@ -86,14 +106,7 @@
       </div>
 
 
-      <!-- <div>
-        <label class="label"><i class="mdi mdi-tray-plus"></i> Quantity </label>
-        <div class="control">
-          <div class="control expanded">
-            <input class="input" type="number" placeholder="Enter your product Quantity ">
-          </div>
-        </div>
-      </div> -->
+    
 
       <br>
 
@@ -109,24 +122,7 @@
 
       <br>
       <hr>
-      <!-- <div class="field"> -->
-      <!-- <label class="label">Subject</label> -->
-
-      <!-- <div class="control">
-              <input class="input" type="text" placeholder="e.g. Partnership opportunity">
-            </div>
-            <p class="help">
-              This field is required
-            </p>
-          </div>
-
-          <div class="field">
-            <label class="label">Question</label>
-            <div class="control">
-              <textarea class="textarea" placeholder="Explain how we can help you"></textarea>
-            </div>
-          </div> -->
-      <!-- <hr> -->
+    
 
       <div class="field grouped">
       <div class="control">
@@ -167,7 +163,7 @@
 
     function addProduct(id, name, price) {
       // Check if the maximum limit is reached (2 items with 1 quantity or 1 item with 2 quantities)
-      if (num < 2) {
+      if (num < 1) {
         const newItemName = name; // You can set the item name dynamically if needed
         const existingItem = Array.from(productList.children).find(item => item.firstChild.textContent.includes(newItemName));
 
@@ -216,7 +212,7 @@
 
         }
       } else {
-        alert("Maximum limit reached. You can have 2 items with 1 quantity or 1 item with 2 quantities.");
+        alert("Maximum limit reached. ");
       }
     }
   </script>

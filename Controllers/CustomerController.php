@@ -49,7 +49,7 @@ class CustomerController extends Controller
 
         $customer = new Customer;
         $customer = $customer->find($id);
-        $this->render("Customer/view", "View Product", ["customer" => $customer]);
+        $this->render("Customer/view", "View Customer", ["customer" => $customer]);
 
 
     }

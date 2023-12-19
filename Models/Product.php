@@ -85,4 +85,59 @@ class Product extends Model
     }
 
 
+    // public function quantity_update($products){
+    //     foreach($products as $product_id => $amount){
+
+    //         $stmt = $this->conn->prepare("SELECT * FROM products WHERE id = ?");
+    //         $stmt->bind_param("i", $product_id);
+    //         $stmt->execute();
+            
+            
+
+    //     }
+
+
+
+
+    // }
+
+    public function quantity_update($products) {
+        // Iterate through each product in the order
+        foreach ($products as $product_id => $amount) {
+            // Retrieve the current stock quantity from the database
+            $current_quantity = $this->get_stock_quantity_from_storage($product_id);
+    
+            // Check if there is sufficient stock for the order
+            if ($amount <= $current_quantity) {
+                // Update the stock quantity in the storage
+                $new_quantity = $current_quantity - $amount;
+                $this->update_stock_quantity_in_storage($product_id, $new_quantity);
+    
+                // Proceed with the order or other actions
+                return true;
+            } else {
+                    return false ;               
+            }
+        }
+    }
+    
+    private function get_stock_quantity_from_storage($product_id) {
+        $Product = new Product;
+        $stmt = $Product->conn->prepare("SELECT stock_quantity FROM products WHERE id = ? LIMIT 1");
+        $stmt->bind_param("i", $product_id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        return $result["stock_quantity"];
+        
+    }
+    
+    private function update_stock_quantity_in_storage($product_id, $new_quantity) {
+        $stmt = $this->conn->prepare("UPDATE products SET stock_quantity = ? WHERE id = ?");
+        $stmt->bind_param("ii",$new_quantity, $product_id);
+        $stmt->execute();
+        $stmt->close();
+    }
+    
+
+
 }

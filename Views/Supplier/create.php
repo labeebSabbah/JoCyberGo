@@ -12,7 +12,7 @@
         <label class="label"><i class="mdi mdi-account"></i> Supplier Name</label>
         <div class="control">
           <div class="control expanded">
-            <input class="input" type="text" name="name">
+            <input class="input" type="text" name="name" required>
           </div>
         </div>
       </div>
@@ -21,7 +21,7 @@
         <label class="label"><i class="mdi mdi-email-outline"></i> Email </label>
         <div class="control">
           <div class="control expanded">
-            <input class="input" type="text" name="email" >
+            <input class="input" type="text" name="email" required>
           </div>
         </div>
       </div>
@@ -31,7 +31,7 @@
         <label class="label"><i class="mdi mdi-phone"></i> Phone </label>
         <div class="control">
           <div class="control expanded">
-            <input class="input" type="text" name="phone" >
+            <input class="input" type="text" name="phone" required>
           </div>
         </div>
       </div>

@@ -34,7 +34,7 @@ if (!isset($_SESSION['user'])){
       </header>
       <div class="card-content">
       <table>
-        <?php if($orders): ?>
+      <?php if($orders->num_rows != 0): ?>
           <thead>
           <tr>
             <!-- <th class="checkbox-cell">
@@ -44,11 +44,11 @@ if (!isset($_SESSION['user'])){
               </label>
             </th> -->
             <th>#</th>
-            <th>Date </th>
-            <th>Customer #</th>
-            <th>Customer Name </th>
-            <th>Price </th>
-            <th>Status </th>
+            <th><i class="mdi mdi-calendar-range"></i> Date </th>
+            <th>#Customer </th>
+            <th><i class="mdi mdi-account"></i>Customer Name </th>
+            <th><i class="mdi mdi-currency-usd"></i>Price </th>
+            <th><i class="mdi mdi-list-status"></i>Status </th>
 
             <th>View</th>
             

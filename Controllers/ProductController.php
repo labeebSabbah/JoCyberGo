@@ -35,16 +35,26 @@ class ProductController extends Controller
         $img = $_FILES["img"];
 
         if (!isset($img)) {
-            die('No file uploaded.');
+            $_SESSION["error"]="No file uploaded.";
+            header("Location: /product/create");
+            exit();
         }
 
         if (filesize($img["tmp_name"]) <= 0) {
-            die('Uploaded file has no contents.');
+            $_SESSION["error"]="Uploaded file has no contents.";
+            header("Location: /product/create");
+            exit();
+
+
         }
 
         $image_type = exif_imagetype($img["tmp_name"]);
         if (!$image_type) {
-            die('Uploaded file is not an image.');
+            $_SESSION["error"]="Uploaded file is not an image.";
+            header("Location: /product/create");
+            exit();
+
+
         }
 
         $image_extension = image_type_to_extension($image_type, true);

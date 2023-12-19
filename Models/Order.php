@@ -10,6 +10,10 @@ class Order extends Model
     public $is_done;
     public $done_at;
 
+    public $priority;
+
+    public $employee_id;
+
     public function __construct()
     {
         parent::__construct();
@@ -23,12 +27,14 @@ class Order extends Model
         return $result;
     }
 
-    public function create($customer_id, $total_price)
+    public function create($customer_id, $total_price, $priority, $employee_id)
     {
         $this->customer_id = $customer_id;
         $this->total_price = $total_price;
-        $stmt = $this->conn->prepare("INSERT INTO orders (customer_id, total_price) VALUE (?, ?)");
-        $stmt->bind_param("id", $this->customer_id, $this->total_price);
+        $this->priority = $priority;
+        $this->employee_id = $employee_id;
+        $stmt = $this->conn->prepare("INSERT INTO orders (customer_id, total_price, priority, employee_id) VALUE (?, ?, ?, ?)");
+        $stmt->bind_param("idsi", $this->customer_id, $this->total_price, $this->priority, $this->employee_id);
         $stmt->execute();
         return $this->conn->insert_id;
     }
@@ -41,6 +47,13 @@ class Order extends Model
         $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $result;
+    }
+
+    public function complete($id) {
+        $stmt = $this->conn->prepare("UPDATE orders SET status='completed', is_done = true WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
     }
 
 
@@ -63,4 +76,7 @@ class Order extends Model
         return $stmt->get_result()->fetch_assoc();
 
     }
+
+
+    
 }
