@@ -8,15 +8,14 @@ if (!isset($_SESSION['user'])){
   <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
     <ul>
       <li>Admin</li>
-      <li>Suppliers</li>
+      <li>Perchase Order List</li>
     </ul>
 
   </div>
 </section>
 <div class="flex justify-end pr-6">  
-    <a class="button blue" href="/supplier/create">Add</a>
+    <a class="button blue" href="/purchaseOrder/create">Add</a>
   </div>
-
 
 
 
@@ -25,50 +24,55 @@ if (!isset($_SESSION['user'])){
       <header class="card-header">
         <p class="card-header-title">
           <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
-          Suppliers
+          Perchase Order List
         </p>
-        <a href="suppliers" class="card-header-icon">
+        <a href="" class="card-header-icon">
           <span class="icon"><i class="mdi mdi-reload"></i></span>
         </a>
       </header>
+
+
+      
       <div class="card-content">
         <table>
-        <?php if($suppliers): ?>
+        <?php if($orders): ?>
           <thead>
           <tr>
-
+            
             <th>#</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
+            <th>Date</th>
+            <th>Supplier #</th>
+            <th>Supplier Name</th>
+            <th>Product #</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+
             
           </tr>
           </thead>
           <tbody>
-            <?php foreach($suppliers as $supplier): ?>
+            <?php foreach($orders as $order): ?>
           <tr>
-
-            <td data-label="id"><?php echo $supplier["id"]; ?></td>
-            <td data-label="Name"><?php echo $supplier["name"]; ?></td>
-            <td data-label="Email"><?php echo $supplier["email"]; ?></td>
-            <td data-label="phone"><?php echo $supplier["phone"]; ?></td>
-            <td class="actions-cell">
-              <div class="buttons right nowrap">
-                <form  action="/supplier/view" method="POST">
-
-                  <button title="View" class="button small blue --jb-modal" id="view" type="submit" name="id" value="<?php echo $supplier['id'] ?>">
+            
+            <td data-label="id"><?php echo $order["order_id"]; ?></td>
+            <td data-label="Name"><?php echo $order["order_date"]; ?></td>
+            <td data-label="Email"><?php echo $order["supplier_id"]; ?></td>
+            <td data-label="Email"><?php echo $order["supplier_name"]; ?></td>
+            <td data-label="Email"><?php echo $order["product_id"]; ?></td>
+            <td data-label="Email"><?php echo $order["product_name"]; ?></td>
+            <td data-label="Email"><?php echo $order["quantity"]; ?></td>
+            <td>
+            <div class="buttons right nowrap">
+                <form  action="/purchaseOrder/view" method="POST">
+                <input hidden value="<?php echo  $order["product_id"]; ?>" name="product_id" >
+                  <button title="View" class="button small blue --jb-modal" id="view" type="submit" name="id" value="<?php echo $order['order_id'] ?>">
                     <span class="icon"><i class="mdi mdi-eye"></i></span>
                   </button>
                 </form>
-                <form action="/supplier/delete" method="POST">
-
-                  <button title="Delete" class="button small red --jb-modal" id="delete" type="submit" name="id" value="<?php echo $supplier['id'] ?>">
-                    <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-                  </button>
-                </form>
+                
               </div>
             </td>
-
+            
           </tr>
           <?php endforeach; ?>
           </tbody>
@@ -78,7 +82,7 @@ if (!isset($_SESSION['user'])){
             </tr>
           <?php endif; ?>
         </table>
-
+        
       </div>
     </div>
   </section>

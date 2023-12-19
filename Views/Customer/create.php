@@ -2,14 +2,14 @@
   <header class="card-header">
     <p class="card-header-title">
       <span class="icon"><i class="mdi mdi-ballot"></i></span>
-      Add Product
+      Add Customer
     </p>
   </header>
   <div class="card-content">
-    <form method="POST" action="/product/store" enctype="multipart/form-data">
+    <form method="POST" action="/customers/store" enctype="multipart/form-data">
 
       <div>
-        <label class="label"><i class="mdi mdi-package-variant-closed"></i> Product Name</label>
+        <label class="label"><i class="mdi mdi-account"></i> Customer Name</label>
         <div class="control">
           <div class="control expanded">
             <input class="input" type="text" name="name">
@@ -18,35 +18,20 @@
       </div>
       <br>
       <div>
-        <label class="label"><i class="mdi mdi-cash"></i> Price </label>
+        <label class="label"><i class="mdi mdi-email-outline"></i> Email </label>
         <div class="control">
           <div class="control expanded">
-            <input class="input" type="number" name="price" step="any">
+            <input class="input" type="text" name="email" >
           </div>
         </div>
       </div>
       <br>
-      <div>
-        <label class="label"><i class="mdi mdi-image"></i> Image </label>
-        <div class="control">
-          <div class="control expanded">
-            <input class="input" type="file" name="img" accept="image/*">
-          </div>
-        </div>
-      </div>
-      <!-- <div hidden>
-        <label class="label"><i class="mdi mdi-cash"></i> quantity </label>
-        <div class="control">
-          <div class="control expanded">
-            <input class="input" type="number" name="quantity" step="any">
-          </div>
-        </div>
-      </div> -->
+ 
       <br>
       <hr>
       <div class="field grouped">
       <div class="control">
-          <button id="back" type="button" class="button bg-gray-500" onclick="window.location = '/products'">
+          <button id="back" type="button" class="button bg-gray-500" onclick="window.location = '/customers'">
             Back
           </button>
         </div>

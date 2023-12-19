@@ -36,9 +36,9 @@ if (isset($_SESSION['user'])) {
         <form method="POST" action="login">
 
           <div class="field spaced">
-            <label class="label">Login</label>
+            <label class="label">Username</label>
             <div class="control icons-left">
-              <input class="input" type="text" name="username" placeholder="user@example.com" autocomplete="username">
+              <input class="input" type="text" name="username" placeholder="" autocomplete="username" required>
               <span class="icon is-small left"><i class="mdi mdi-account"></i></span>
             </div>
             <p class="help">
@@ -50,7 +50,7 @@ if (isset($_SESSION['user'])) {
             <label class="label">Password</label>
             <p class="control icons-left">
               <input class="input" type="password" name="password" placeholder="Password"
-                autocomplete="current-password">
+                autocomplete="current-password" required>
               <span class="icon is-small left"><i class="mdi mdi-asterisk"></i></span>
             </p>
             <p class="help">

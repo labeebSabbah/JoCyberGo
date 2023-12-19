@@ -7,6 +7,7 @@ class Product extends Model
     public $name;
     public $price;
     public $img;
+    // public $quantity;
     public $is_deleted = false;
 
     public function __construct()
@@ -27,7 +28,8 @@ class Product extends Model
         $this->name = $name;
         $this->price = $price;
         $this->img = $img;
-        $stmt = $this->conn->prepare("INSERT INTO products (name, price, img) VALUE (?, ?, ?)");
+        // $this->quantity = $quantity;
+        $stmt = $this->conn->prepare("INSERT INTO products (name, price, img ) VALUE (?, ?, ?)");
         $stmt->bind_param("sds", $this->name, $this->price, $this->img);
         $stmt->execute();
     }
@@ -41,6 +43,17 @@ class Product extends Model
         $result = $stmt->get_result()->fetch_assoc();
         return $result;
     }
+
+
+    // public function find_q($id)
+    // {
+    //     $Order = new Product;
+    //     $stmt = $Order->conn->prepare(" SELECT * FROM products WHERE id = ?; ");
+    //     $stmt->bind_param("i", $id);
+    //     $stmt->execute();
+    //     $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    //     return $result;
+    // }
 
     public function update($id, $name, $price, $img = null)
     {
@@ -62,4 +75,14 @@ class Product extends Model
         $stmt->bind_param("i", $id);
         $stmt->execute();
     }
+
+    public function update_quantity($quantity, $product_id){
+
+        $stmt = $this->conn->prepare("UPDATE products SET stock_quantity = stock_quantity + ? WHERE id = ?");
+        $stmt->bind_param("ii", $quantity, $product_id);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+
 }

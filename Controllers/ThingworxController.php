@@ -12,7 +12,7 @@ class ThingworxController extends Controller
         $json = file_get_contents('php://input');
         $data = json_decode($json);
         $PL = new ProductionLine;
-        $PL->i_wanna_die($data->value);
+        $PL->i_wanna_die($data->id, $data->station, $data->value);
     }
 
     public function test()
@@ -56,9 +56,12 @@ class ThingworxController extends Controller
 
     public function WWS()
     {
+        $id = $_POST['id'];
+        $body = json_encode(["id" => "$id"]);
         $ch = curl_init(Thingworx::$WWS);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'appKey: ' . Thingworx::$key,
             'Content-Type: application/json',
@@ -68,7 +71,7 @@ class ThingworxController extends Controller
         $response = curl_exec($ch);
         curl_close($ch);
 
-        sleep(1);
+        sleep(2);
 
         $this->add();
 
@@ -79,9 +82,12 @@ class ThingworxController extends Controller
 
     public function WWR()
     {
+        $id = $_POST['id'];
+        $body = json_encode(["id" => "$id"]);
         $ch = curl_init(Thingworx::$WWR);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'appKey: ' . Thingworx::$key,
             'Content-Type: application/json',
@@ -102,9 +108,12 @@ class ThingworxController extends Controller
 
     public function WBS()
     {
+        $id = $_POST['id'];
+        $body = json_encode(["id" => "$id"]);
         $ch = curl_init(Thingworx::$WBS);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'appKey: ' . Thingworx::$key,
             'Content-Type: application/json',
@@ -125,9 +134,12 @@ class ThingworxController extends Controller
 
     public function WBR()
     {
+        $id = $_POST['id'];
+        $body = json_encode(["id" => "$id"]);
         $ch = curl_init(Thingworx::$WWS);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'appKey: ' . Thingworx::$key,
             'Content-Type: application/json',
@@ -148,9 +160,12 @@ class ThingworxController extends Controller
 
     public function BBR()
     {
+        $id = $_POST['id'];
+        $body = json_encode(["id" => "$id"]);
         $ch = curl_init(Thingworx::$BBR);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'appKey: ' . Thingworx::$key,
             'Content-Type: application/json',
@@ -171,9 +186,12 @@ class ThingworxController extends Controller
 
     public function BBS()
     {
+        $id = $_POST['id'];
+        $body = json_encode(["id" => "$id"]);
         $ch = curl_init(Thingworx::$BBS);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'appKey: ' . Thingworx::$key,
             'Content-Type: application/json',
@@ -194,9 +212,12 @@ class ThingworxController extends Controller
 
     public function BWS()
     {
+        $id = $_POST['id'];
+        $body = json_encode(["id" => "$id"]);
         $ch = curl_init(Thingworx::$BWS);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'appKey: ' . Thingworx::$key,
             'Content-Type: application/json',
@@ -217,9 +238,12 @@ class ThingworxController extends Controller
 
     public function BWR()
     {
+        $id = $_POST['id'];
+        $body = json_encode(["id" => "$id"]);
         $ch = curl_init(Thingworx::$BWR);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'appKey: ' . Thingworx::$key,
             'Content-Type: application/json',

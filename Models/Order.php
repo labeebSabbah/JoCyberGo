@@ -43,6 +43,8 @@ class Order extends Model
         return $result;
     }
 
+
+
     public function delete($id)
     {
         $stmt = $this->conn->prepare("DELETE FROM product_orders WHERE order_id = ?");

@@ -1,16 +1,18 @@
 <style>
   #items {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 20px;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: 10px;
   }
 
   #items li {
+    width: 80% !important;
     border-radius: 2%;
-    padding: 50px;
+    padding: 10px;
     width: 350px;
     color: white;
     font-size: large;
@@ -24,10 +26,9 @@
     <div class="flex items-center">
 
 
-
-
       <div class="flex items-center text-teal-600 relative">
-        <div id="station1_logo" class="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-gray-300">
+        <div id="station1_logo"
+          class="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-gray-300">
           <svg width="100%" height="100%" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -46,13 +47,14 @@
             </g>
           </svg>
         </div>
-        <div class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-teal-600">Staion 1
+        <div id="station1_text"
+          class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-gray-500">Start
         </div>
       </div>
 
 
-      <div class="flex w-1/4 h-1.5 bg-gray-200 rounded-full overflow-hidden" role="progressbar"
-        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+      <div class="flex w-1/4 h-1.5 bg-gray-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow="25"
+        aria-valuemin="0" aria-valuemax="100">
         <div id="station1"
           class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500"
           style="width: 0%"></div>
@@ -82,14 +84,15 @@
           </svg>
 
         </div>
-        <div class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-teal-600">Staion 2
+        <div id="station2_text"
+          class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-gray-500">Bottom
         </div>
       </div>
 
 
 
-      <div class="flex w-1/4 h-1.5 bg-gray-200 rounded-full overflow-hidden" role="progressbar"
-        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+      <div class="flex w-1/4 h-1.5 bg-gray-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow="25"
+        aria-valuemin="0" aria-valuemax="100">
         <div id="station2"
           class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500"
           style="width: 0%"></div>
@@ -98,7 +101,8 @@
 
 
       <div class="flex items-center text-gray-500 relative">
-        <div id="station3_logo" class="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-gray-300">
+        <div id="station3_logo"
+          class="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-gray-300">
           <svg width="100%" height="100%" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -118,13 +122,14 @@
           </svg>
 
         </div>
-        <div class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-gray-500">Staion 3
+        <div id="station3_text"
+          class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-gray-500">Top
         </div>
       </div>
 
 
-      <div class="flex w-1/4 h-1.5 bg-gray-200 rounded-full overflow-hidden" role="progressbar"
-        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+      <div class="flex w-1/4 h-1.5 bg-gray-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow="25"
+        aria-valuemin="0" aria-valuemax="100">
         <div id="station3"
           class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500"
           style="width: 0%"></div>
@@ -132,7 +137,8 @@
 
 
       <div class="flex items-center text-gray-500 relative">
-        <div id="station4_logo" class="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-gray-300">
+        <div id="station4_logo"
+          class="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-gray-300">
           <svg width="100%" height="100%" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -152,13 +158,14 @@
           </svg>
 
         </div>
-        <div class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-gray-500">Staion 4
+        <div id="station4_text"
+          class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-gray-500">Bolt
         </div>
       </div>
 
 
-      <div class="flex w-1/4 h-1.5 bg-gray-200 rounded-full overflow-hidden" role="progressbar"
-        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+      <div class="flex w-1/4 h-1.5 bg-gray-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow="25"
+        aria-valuemin="0" aria-valuemax="100">
         <div id="station4"
           class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500"
           style="width: 0%"></div>
@@ -166,7 +173,8 @@
 
 
       <div class="flex items-center text-gray-500 relative">
-        <div id="station5_logo" class="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-gray-300">
+        <div id="station5_logo"
+          class="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-gray-300">
           <svg width="100%" height="100%" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -186,7 +194,8 @@
           </svg>
 
         </div>
-        <div class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-gray-500">Staion 5
+        <div id="station5_text"
+          class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-gray-500">Packaging
         </div>
       </div>
 
@@ -205,11 +214,11 @@
 
 <ul id="items">
   <?php foreach ($orders as $order): ?>
-    <li id="<?php echo $order['id'] ?>" class="rounded-t-lg">#
-      <?php echo $order["id"]; ?><br>Customer name =
-      <?php echo $order["name"]; ?><br>Product Name =
-      <?php echo $order["prod_name"]; ?><br>Amount=
-      <?php echo $order["amount"]; ?><br>Total=
+    <li id="<?php echo $order['prod_ord_id'] ?>" class="rounded-t-lg">#
+      <?php echo $order["id"]; ?> | Customer name =
+      <?php echo $order["name"]; ?> | Product Name =
+      <?php echo $order["prod_name"]; ?> | Amount=
+      <?php echo $order["amount"]; ?> | Total=
       <?php echo $order["total_price"]; ?>$
     </li>
   <?php endforeach; ?>
@@ -239,7 +248,9 @@
         "queue": q
       },
       success: function (response) {
-        alert(response);
+      },
+      error: function () {
+        alert("Fail");
       }
     });
   }
@@ -253,10 +264,14 @@
 
     let bar = document.getElementById(`station${id}`);
     let logo = document.getElementById(`station${id}_logo`);
+    let text = document.getElementById(`station${id}_text`);
 
     if (id === 5) {
       logo.classList.add("bg-teal-600");
+      text.classList.remove("text-gray-500");
+      text.classList.add("text-teal-600");
       clearInterval(progress);
+      clicked = false;
       return;
     }
 
@@ -265,15 +280,20 @@
       nextLogo.classList.remove("border-gray-300");
       nextLogo.classList.add("border-teal-600");
       logo.classList.add("bg-teal-600");
+      text.classList.remove("text-gray-500");
+      text.classList.add("text-teal-600");
       for (let y = id - 1; y >= 1; y--) {
         let prevBar = document.getElementById(`station${y}`);
         let prevLogo = document.getElementById(`station${y}_logo`);
+        let prevText = document.getElementById(`station${y}_text`);
         prevBar.classList.remove("bg-blue-600");
         prevBar.classList.add("bg-teal-600");
         prevBar.style.width = "100%";
         prevLogo.classList.remove("border-gray-300");
         prevLogo.classList.add("border-teal-600");
         prevLogo.classList.add("bg-teal-600");
+        prevText.classList.remove("text-gray-500");
+        prevText.classList.add("text-teal-600");
       }
       checker = true;
     }
@@ -293,16 +313,49 @@
   }
 
   function progressInterval(id) {
-    if (id == 6) {return;}
-    progress = setInterval(() => {animate(id);}, 100);
+    if (id == 6) { return; }
+    progress = setInterval(() => { animate(id); }, 100);
   }
 
   function start() {
     if (clicked) {
       return;
     }
-    clicked = true;
-    progressInterval(1);
+    $.ajax({
+      url: "/wwr",
+      method: "POST",
+      data: {
+        "id": `${document.getElementById("items").firstChild.nextSibling.id}`
+      },
+      success: function (response) {
+        reset();
+        clicked = true;
+        progressInterval(1);
+      },
+      error: function () {
+        alert("error");
+      }
+    });
+  }
+
+  function reset() {
+    for (let x = 1; x <= 5; x++) {
+      let bar = document.getElementById(`station${x}`);
+      let logo = document.getElementById(`station${x}_logo`);
+      let text = document.getElementById(`station${x}_text`);
+
+      logo.classList.remove("border-teal-600");
+      logo.classList.remove("bg-teal-600");
+      logo.classList.add("border-gray-300");
+      text.classList.remove("text-teal-600");
+      text.classList.add("text-gray-500");
+
+      if (x !== 5) {
+        bar.classList.remove("bg-teal-600");
+        bar.classList.add("bg-blue-600");
+        bar.style.width = "0%";
+      }
+    }
   }
 </script>
 

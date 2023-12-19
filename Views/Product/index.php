@@ -16,15 +16,9 @@ if (!isset($_SESSION['user'])){
   </div>
 </section>
 
-<!-- <section class="is-hero-bar">
-  <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
-    <h1 class="title">
-      Products Table
-    </h1>
-    <button class="button light">Button</button>
+<div class="flex justify-end pr-6">  
+    <a class="button blue" href="/product/create">Add</a>
   </div>
-</section> -->
-
   <section class="section main-section">
     <div class="card has-table">
       <header class="card-header">
@@ -64,7 +58,6 @@ if (!isset($_SESSION['user'])){
               </label>
             </td> -->
             <td data-label="id"><?php echo $product["id"]; ?></td>
-
             <td data-label="Name"><?php echo $product["name"]; ?></td>
             <td data-label="Price"><?php echo $product["price"]; ?>$</td>
             <td class="actions-cell">

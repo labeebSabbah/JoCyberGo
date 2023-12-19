@@ -2,40 +2,38 @@
   <header class="card-header">
     <p class="card-header-title">
       <span class="icon"><i class="mdi mdi-ballot"></i></span>
-      Product View
+      Customer View
     </p>
   </header>
   <div class="card-content">
-    <form method="POST" action="/product/update" enctype="multipart/form-data">
+    <form method="POST" action="/supplier/update" enctype="multipart/form-data">
 
-      <input type="hidden" name="id" value="<?php echo $product['id'] ?>">
-      <input type="hidden" name="old_img" value="<?php echo $product['img'] ?>" width="300" height="300">
+      <input type="hidden" name="id" value="<?php echo $supplier['id'] ?>">
 
-      <img src="<?php echo $product['img'] ?>" alt="">
 
       <div>
-        <label class="label"><i class="mdi mdi-package-variant-closed"></i> Product Name</label>
+        <label class="label"><i class="mdi mdi-package-variant-closed"></i> Supplier Name</label>
         <div class="control">
           <div class="control expanded">
-            <input class="input" type="text" value="<?php echo $product['name'] ?> " name="name">
+            <input class="input" type="text" value="<?php echo $supplier['name'] ?> " name="name">
           </div>
         </div>
       </div>
       <br>
       <div>
-        <label class="label"><i class="mdi mdi-cash"></i> Price </label>
+        <label class="label"><i class="mdi mdi-cash"></i> Email </label>
         <div class="control">
           <div class="control expanded">
-            <input class="input" type="number" value="<?php echo $product['price'] ?>" name="price" step="any">
+            <input class="input" type="text" value="<?php echo $supplier['email'] ?>" name="email" >
           </div>
         </div>
       </div>
       <br>
       <div>
-        <label class="label"><i class="mdi mdi-image"></i> Image </label>
+        <label class="label"><i class="mdi mdi-cash"></i> Phone </label>
         <div class="control">
           <div class="control expanded">
-            <input class="input" type="file" name="img" accept="image/*">
+            <input class="input" type="text" value="<?php echo $supplier['phone'] ?>" name="phone" >
           </div>
         </div>
       </div>
@@ -43,7 +41,7 @@
       <hr>
       <div class="field grouped">
       <div class="control">
-          <button id="back" type="button" class="button bg-gray-500" onclick="window.location = '/products'">
+          <button id="back" type="button" class="button bg-gray-500" onclick="window.location = '/suppliers'">
             Back
           </button>
         </div>

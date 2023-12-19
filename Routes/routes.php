@@ -20,6 +20,13 @@ $router->addRoute('/profile', UserController::class,'profile');
 $router->addRoute('/profile/update', UserController::class, 'update');
 
 $router->addRoute('/customers', CustomerController::class,'index');
+$router->addRoute('/customers/create', CustomerController::class,'create');
+$router->addRoute('/customers/store', CustomerController::class,'store');
+$router->addRoute('/customer', CustomerController::class,'view');
+$router->addRoute('/customer/delete', CustomerController::class,'delete');
+$router->addRoute('/customer/update', CustomerController::class,'update');
+
+
 
 $router->addRoute('/products', ProductController::class,'index');
 $router->addRoute('/product/create', ProductController::class, 'create');
@@ -40,9 +47,22 @@ $router->addRoute('/productionline', ProductionLineController::class,'index');
 $router->addRoute('/suppliers', SuppliersController::class,'index');
 $router->addRoute('/supplier/create', SuppliersController::class,'create');
 $router->addRoute('/supplier/store', SuppliersController::class,'store');
+$router->addRoute('/supplier/view', SuppliersController::class,'view');
+$router->addRoute('/supplier/delete', SuppliersController::class,'delete');
+$router->addRoute('/supplier/update', SuppliersController::class,'update');
 
-$router->addRoute('/supplier/orders', SuppliersController::class,'supplier_orders');
-$router->addRoute('/supplier/order/create', SuppliersController::class,'supplier_order_create');
+
+
+$router->addRoute('/purchaseOrders', SuppliersController::class,'supplier_orders');
+$router->addRoute('/purchaseOrder/create', SuppliersController::class,'supplier_order_create');
+$router->addRoute('/purchaseOrder/store', SuppliersController::class,'supplier_order_store');
+$router->addRoute('/purchaseOrder/view', SuppliersController::class,'purchase_order_view');
+$router->addRoute('/purchaseOrder/update', SuppliersController::class,'purchase_order_store');
+
+
+
+
+$router->addRoute('/stock-control', SuppliersController::class, 'stock_control');
 
 // $router->addRoute("/test", ThingworxController::class, "test");
 // $router->addRoute("/test1", ThingworxController::class, "test1");
@@ -59,6 +79,7 @@ $router->addRoute('/supplier/order/create', SuppliersController::class,'supplier
 // $router->addRoute("/reset", ThingworxController::class, "reset");
 
 // $router->addRoute("/api", ThingworxController::class, "api");
+
 $router->addRoute("/api/setQueue", ProductionLineController::class, "setQueue");
 
 

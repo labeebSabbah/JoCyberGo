@@ -15,48 +15,9 @@
   <div class="card-content">
     <form id="addForm" method="POST" action="/order/store">
       <input id="hidden" type="hidden" name="products" value="">
-      <!-- <div class="field">
-             <label class="label">From</label> 
-            <div class="field-body">
-              <div class="field">
-                <div class="control icons-left">
-                  <input class="input" type="text" placeholder="Customer Name">
-                  <span class="icon left"><i class="mdi mdi-account"></i></span>
-                </div>
-              </div> -->
-      <!-- <div class="field">
-                <div class="control icons-left icons-right">
-                  <input class="input" type="email" placeholder="Email" value="alex@smith.com">
-                  <span class="icon left"><i class="mdi mdi-mail"></i></span>
-                  <span class="icon right"><i class="mdi mdi-check"></i></span>
-                </div>
-              </div> -->
-      <!-- </div>
-          </div>
-          <div class="field">
-            <div class="field-body">
-              <div class="field">
-                <div class="field addons">
-                    <div class="card-header-icon">
-                        <span class="icon"><i class="mdi mdi-package-variant-closed"></i></span>
-                    </div>
-                    <div class="control expanded">
-                    <input class="input" type="tel" placeholder="Your phone number">
-                  </div>
-                </div>
-                <p class="help">Do not enter the first zero</p>
-              </div>
-            </div>
-          </div> -->
-      <!-- <div class="field"> -->
-      <!-- <span class="icon"><i class="mdi mdi-package-variant-closed"></i> -->
-      <!-- </span> -->
-      <!-- <i class="mdi mdi-package-variant-closed"> -->
-
-
 
       <div>
-        <label class="label"><i class="mdi mdi-account-multiple"></i> Customer Name</label>
+        <label class="label"><i class="mdi mdi-account"></i> Customer Name</label>
         <div class="control">
           <div class="select">
             <select name="customer" required>
@@ -168,6 +129,11 @@
       <!-- <hr> -->
 
       <div class="field grouped">
+      <div class="control">
+          <button id="back" type="button" class="button bg-gray-500" onclick="window.location = '/orders'">
+            Back
+          </button>
+        </div>
         <div class="control">
           <button id="submit" type="submit" class="button green">
             Submit
