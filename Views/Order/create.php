@@ -1,3 +1,10 @@
+<?php
+
+if (!isset($_SESSION['user'])) {
+  header('location:/');
+}
+
+?>
 <style>
   .delete-button {
     cursor: pointer;
@@ -21,38 +28,56 @@
         <div class="control">
           <div class="select">
             <select name="customer" required>
-              <option value="" selected >Choose the customer...</option>
-              <?php foreach ($customers as $customer) : ?>
-                <option value="<?php echo $customer['id'] ?>"><?php echo $customer['name'] ?></option>
+              <option value="" selected>Choose the customer...</option>
+              <?php foreach ($customers as $customer): ?>
+                <option value="<?php echo $customer['id'] ?>">
+                  <?php echo $customer['name'] ?>
+                </option>
               <?php endforeach; ?>
             </select>
           </div>
         </div>
       </div>
-<br>
+      <br>
       <div>
         <label class="label"><i class="mdi mdi-account"></i> Employee</label>
         <div class="control">
           <div class="select">
-          <select name="employee_id" required>
-              <option value="" selected >Choose the Employee...</option>
-              <?php foreach ($employees as $employee) : ?>
-                <option value="<?php echo $employee['id'] ?>"><?php echo $employee['name'] ?></option>
+            <select name="employee_id" required>
+              <option value="" selected>Choose the Employee...</option>
+              <?php foreach ($employees as $employee): ?>
+                <option value="<?php echo $employee['id'] ?>">
+                  <?php echo $employee['name'] ?>
+                </option>
               <?php endforeach; ?>
             </select>
           </div>
         </div>
       </div>
-<br>
+      <br>
 
       <div>
         <label class="label"><i class="mdi mdi-account"></i> Priority </label>
         <div class="control">
           <div class="select">
-          <select name="priority" required>
-              <option value="" selected >Choose the priority...</option>
-              <?php foreach ($priorities as $priority) : ?>
-                <option value="<?php echo $priority ?>"><?php echo $priority ?></option>
+            <select name="priority" required>
+              <option value="" selected>Choose the priority...</option>
+              <?php foreach ($priorities as $priority): ?>
+                <option value="<?php echo $priority ?>">
+                  <?php
+                  switch ($priority) {
+                    case 1:
+                      echo 'High';
+                      break;
+                    case 2:
+                      echo 'Medium';
+                      break;
+                    case 3:
+                      echo 'Low';
+                      break;
+                  }
+                  ?>
+                </option>
               <?php endforeach; ?>
             </select>
           </div>
@@ -61,28 +86,33 @@
 
 
 
-     
+
 
       <br>
 
       <div>
         <label class="label"><i class="mdi mdi-package-variant-closed"></i> Products</label>
-  
+
         <div class="w-full flex justify-center gap-5 flex-wrap">
 
-          <?php foreach ($products as $product) : ?>
+          <?php foreach ($products as $product): ?>
 
-            <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-xs dark:bg-gray-800 dark:border-gray-700">
+            <div
+              class="bg-white shadow-md border border-gray-200 rounded-lg max-w-xs dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
                 <img class="rounded-t-lg" src="<?php echo $product['img'] ?>" alt="">
               </a>
               <div class="p-5">
                 <a href="#">
-                  <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white"><?php echo $product["name"] ?></h5>
+                  <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">
+                    <?php echo $product["name"] ?>
+                  </h5>
                 </a>
-                <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="addProduct(<?php echo $product['id'] ?>, '<?php echo $product['name'] ?>', <?php echo $product['price'] ?>)">
+                <button type="button"
+                  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  onclick="addProduct(<?php echo $product['id'] ?>, '<?php echo $product['name'] ?>', <?php echo $product['price'] ?>)">
                   Add <i class="mdi mdi-plus"></i>
-               
+
                   </buton>
               </div>
             </div>
@@ -106,7 +136,7 @@
       </div>
 
 
-    
+
 
       <br>
 
@@ -122,10 +152,10 @@
 
       <br>
       <hr>
-    
+
 
       <div class="field grouped">
-      <div class="control">
+        <div class="control">
           <button id="back" type="button" class="button bg-gray-500" onclick="window.location = '/orders'">
             Back
           </button>
@@ -187,7 +217,7 @@
           deleteButton.setAttribute("type", "button");
           deleteButton.classList.add("delete-button");
           deleteButton.textContent = "X";
-          deleteButton.addEventListener("click", function() {
+          deleteButton.addEventListener("click", function () {
             const quantity = parseInt(itemName.textContent.split(" x ")[1]);
             const itemPrice = price;
             if (quantity > 1) {
@@ -219,7 +249,7 @@
 
   <script>
     let reset = document.querySelector("#reset");
-    reset.addEventListener("click", function() {
+    reset.addEventListener("click", function () {
       products = [];
       num = 0;
       productList.innerHTML = '';

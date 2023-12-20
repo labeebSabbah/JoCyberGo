@@ -49,6 +49,7 @@ if (!isset($_SESSION['user'])){
             <th><i class="mdi mdi-account"></i>Customer Name </th>
             <th><i class="mdi mdi-currency-usd"></i>Price </th>
             <th><i class="mdi mdi-list-status"></i>Status </th>
+            <th><i class="mdi mdi-calendar-range"></i> Done at </th>
 
             <th>View</th>
             
@@ -69,6 +70,11 @@ if (!isset($_SESSION['user'])){
             <td data-label="Toatal Price"><?php echo $order["name"]; ?></td>
             <td data-label="Created at"><?php echo $order["total_price"]; ?>$</td>
             <td data-label="Created at"><?php echo $order["status"]; ?></td>
+            <td data-label="Done At"><?php
+                if ($order["status"] == "completed") {
+                  echo $order['done_at'];
+                }
+            ?></td>
 
 
             <td class="actions-cell">

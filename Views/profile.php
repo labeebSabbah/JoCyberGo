@@ -1,3 +1,10 @@
+<?php
+
+if (!isset($_SESSION['user'])) {
+  header('location:/');
+}
+
+?>
 <section class="is-title-bar">
   <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
     <ul>
@@ -16,8 +23,8 @@
   </div>
 </section> -->
 
-  <section class="section main-section">
-    <!-- <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
+<section class="section main-section">
+  <!-- <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
       <div class="card">
         <header class="card-header">
           <p class="card-header-title">
@@ -85,58 +92,58 @@
         </div>
       </div>
     </div> -->
-    <div class="card">
-      <header class="card-header">
-        <p class="card-header-title">
-          <span class="icon"><i class="mdi mdi-lock"></i></span>
-          Change Password
-        </p>
-      </header>
-      <div class="card-content">
-        <form method="POST" action="/profile/update">
-          <div class="field">
-            <label class="label">Current password</label>
-            <div class="control">
-              <input type="password" name="password" class="input" required>
-            </div>
-            <p class="help">Required. Your current password</p>
+  <div class="card">
+    <header class="card-header">
+      <p class="card-header-title">
+        <span class="icon"><i class="mdi mdi-lock"></i></span>
+        Change Password
+      </p>
+    </header>
+    <div class="card-content">
+      <form method="POST" action="/profile/update">
+        <div class="field">
+          <label class="label">Current password</label>
+          <div class="control">
+            <input type="password" name="password" class="input" required>
           </div>
-          <hr>
-          <div class="field">
-            <label class="label">New password</label>
-            <div class="control">
-              <input type="password" name="new-password" class="input" required>
-            </div>
-            <p class="help">Required. New password</p>
+          <p class="help">Required. Your current password</p>
+        </div>
+        <hr>
+        <div class="field">
+          <label class="label">New password</label>
+          <div class="control">
+            <input type="password" name="new-password" class="input" required>
           </div>
-          <div class="field">
-            <label class="label">Confirm password</label>
-            <div class="control">
-              <input type="password" name="confirm-new" class="input" required>
-            </div>
-            <p class="help">Required. New password one more time</p>
+          <p class="help">Required. New password</p>
+        </div>
+        <div class="field">
+          <label class="label">Confirm password</label>
+          <div class="control">
+            <input type="password" name="confirm-new" class="input" required>
           </div>
-          <hr>
-          <div class="field">
-            <div class="control">
-              <button type="submit" class="button green">
-                Submit
-              </button>
-            </div>
+          <p class="help">Required. New password one more time</p>
+        </div>
+        <hr>
+        <div class="field">
+          <div class="control">
+            <button type="submit" class="button green">
+              Submit
+            </button>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer class="footer">
+<footer class="footer">
   <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0">
     <div class="flex items-center justify-start space-x-3">
       <div>
         © 2023, JoCyberGo Team
       </div>
     </div>
-    
-    
-  </div> 
+
+
+  </div>
 </footer>

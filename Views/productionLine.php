@@ -1,3 +1,10 @@
+<?php
+
+if (!isset($_SESSION['user'])) {
+  header('location:/');
+}
+
+?>
 <style>
   #items,
   #items1 {
@@ -26,8 +33,8 @@
 
 <ul id="items1">
   <?php foreach ($running as $running1): ?>
-    <li class="bg-blue-400" id="<?php echo $running1['prod_ord_id'] ?>" data-station="<?php echo $running1['station'] ?>" data-id="<?php echo $running1['id'] ?>"
-      class="rounded-t-lg">#
+    <li class="bg-blue-400" id="<?php echo $running1['prod_ord_id'] ?>" data-station="<?php echo $running1['station'] ?>"
+      data-id="<?php echo $running1['id'] ?>" class="rounded-t-lg">#
       <?php echo $running1["id"]; ?> | Customer name =
       <?php echo $running1["name"]; ?> | Product Name =
       <?php echo $running1["prod_name"]; ?> | Amount=
@@ -42,9 +49,7 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
+
 
 
 
@@ -243,14 +248,20 @@
   <?php foreach ($orders as $order): ?>
     <li class="
       <?php
-        switch($order['priority']) {
-          case 1: echo 'bg-red-600'; break;
-          case 2: echo 'bg-yellow-600'; break;
-          case 3: echo 'bg-gray-600'; break;
-        }
+      switch ($order['priority']) {
+        case 1:
+          echo 'bg-red-600';
+          break;
+        case 2:
+          echo 'bg-yellow-600';
+          break;
+        case 3:
+          echo 'bg-gray-600';
+          break;
+      }
       ?>
-    " id="<?php echo $order['prod_ord_id'] ?>" data-combination="<?php echo $order['combination'] ?>" data-id="<?php echo $order['id'] ?>"
-      class="rounded-t-lg">#
+    " id="<?php echo $order['prod_ord_id'] ?>" data-combination="<?php echo $order['combination'] ?>"
+      data-id="<?php echo $order['id'] ?>" class="rounded-t-lg">#
       <?php echo $order["id"]; ?> | Customer name =
       <?php echo $order["name"]; ?> | Product Name =
       <?php echo $order["prod_name"]; ?> | Amount=
@@ -260,6 +271,28 @@
   <?php endforeach; ?>
 </ul>
 <br>
+
+<hr>
+<table class="w-2/12">
+  <tr>
+
+    <th>Priority</th>
+    <th> color</th>
+    </tr>
+    <tr>
+      <td> Hight</td>
+      <td class="!bg-red-600"></td>
+    </tr>
+    <tr>
+      <td> Medium</td>
+      <td class="!bg-yellow-600"></td>
+    </tr>
+    <tr>
+      <td> Low</td>
+      <td class="!bg-gray-600"></td>
+    </tr>
+
+</table>
 
 <script src="/node_modules/sortablejs/Sortable.min.js"></script>
 <script>
@@ -373,15 +406,20 @@
   function progressInterval(id) {
     let stop = false;
     console.log(id)
-    if (id == 5) { 
+    if (id == 5) {
       $.ajax({
         url: "/order/complete",
         method: "POST",
         data: {
-          id: `${ord_id}`
+          id: `${ord_id}`,
+          order_id: `${order_id}`
         },
         success: function (response) {
-          document.getElementById("items1").firstChild.nextSibling.remove();
+          document.getElementById("items1").firstChild.nextSibling.classList.remove("bg-blue-400");
+          document.getElementById("items1").firstChild.nextSibling.classList.add("bg-teal-600");
+          setTimeout(function () {
+            document.getElementById("items1").firstChild.nextSibling.remove();
+          }, 3000);
           clearInterval(progress);
           clicked = false;
           stop = true;
@@ -427,26 +465,21 @@
       }
     });
 
-    // $.ajax({
-    //   url: "/" + document.getElementById("items").firstChild.nextSibling.dataset.combination,
-    //   method: "POST",
-    //   data: {
-    //     "id": `${document.getElementById("items").firstChild.nextSibling.id}`
-    //   },
-    //   success: function (response) {
-    //     reset();
-    //     clicked = true;
-    //     progressInterval(1);
-    //   },
-    //   error: function () {
-    //     alert("error");
-    //   }
-    // });
-
-    reset();
-    clicked = true;
-    progressInterval(1);
-
+    $.ajax({
+      url: "/" + document.getElementById("items").firstChild.nextSibling.dataset.combination,
+      method: "POST",
+      data: {
+        "id": `${document.getElementById("items").firstChild.nextSibling.id}`
+      },
+      success: function (response) {
+        reset();
+        clicked = true;
+        progressInterval(1);
+      },
+      error: function () {
+        alert("error");
+      }
+    });
 
     let s = document.getElementById("items").firstChild.nextSibling;
     s.remove();

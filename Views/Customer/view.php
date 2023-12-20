@@ -1,3 +1,10 @@
+<?php
+
+if (!isset($_SESSION['user'])) {
+  header('location:/');
+}
+
+?>
 <div class="card mb-6">
   <header class="card-header">
     <p class="card-header-title">

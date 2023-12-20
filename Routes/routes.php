@@ -82,18 +82,18 @@ $router->addRoute("/order/complete", OrderController::class, "complete");
 $router->addRoute("/test", ThingworxController::class, "test");
 $router->addRoute("/test1", ThingworxController::class, "test1");
 
-// $router->addRoute("/bbr", ThingworxController::class, "BBR");
-// $router->addRoute("/bbs", ThingworxController::class, "BBS");
-// $router->addRoute("/bwr", ThingworxController::class, "BWR");
-// $router->addRoute("/bws", ThingworxController::class, "BWS");
-// $router->addRoute("/wws", ThingworxController::class, "WWS");
-// $router->addRoute("/wwr", ThingworxController::class, "WWR");
-// $router->addRoute("/wbr", ThingworxController::class, "WBR");
-// $router->addRoute("/wbs", ThingworxController::class, "WBS");
+$router->addRoute("/bbr", ThingworxController::class, "BBR");
+$router->addRoute("/bbs", ThingworxController::class, "BBS");
+$router->addRoute("/bwr", ThingworxController::class, "BWR");
+$router->addRoute("/bws", ThingworxController::class, "BWS");
+$router->addRoute("/wws", ThingworxController::class, "WWS");
+$router->addRoute("/wwr", ThingworxController::class, "WWR");
+$router->addRoute("/wbr", ThingworxController::class, "WBR");
+$router->addRoute("/wbs", ThingworxController::class, "WBS");
 
-// $router->addRoute("/reset", ThingworxController::class, "reset");
+$router->addRoute("/reset", ThingworxController::class, "reset");
 
-// $router->addRoute("/api", ThingworxController::class, "api");
+$router->addRoute("/api", ThingworxController::class, "api");
 $router->addRoute("/api/check_station", ProductionLineController::class, "check_station");
 
 // $router->addRoute("/api/setQueue", ProductionLineController::class, "setQueue");

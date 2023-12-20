@@ -93,6 +93,11 @@ class ProductionLine extends Model
         return $result["station"];
     }
 
-
+    public function remove($order_id) {
+        $stmt = $this->conn->prepare("DELETE FROM production_line WHERE product_order_id = ?");
+        $stmt->bind_param("i", $order_id);
+        $stmt->execute();
+        $stmt->close();
+    }
 
 }

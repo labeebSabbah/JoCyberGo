@@ -1,8 +1,8 @@
 <?php
-//  var_dump($purchesOrderItems);
-// var_dump($product["stock_quantity"]);
 
-
+if (!isset($_SESSION['user'])) {
+  header('location:/');
+}
 
 ?>
 

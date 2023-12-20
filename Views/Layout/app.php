@@ -95,12 +95,10 @@ $uri = $_SERVER["REQUEST_URI"];
                 <aside class="aside is-placed-left is-expanded">
                     <div class="aside-tools">
                         <div>
-                            <!-- <img src="/src/img/logo.jpg" alt="logo" width="50" height="50"> -->
                             <b class="font-black">JoCyberGo</b>
                         </div>
                     </div>
                     <div class="menu is-menu-main">
-                        <!-- <p class="menu-label">General</p> -->
                         <ul class="menu-list">
                             <li class="<?php if ($uri == '/home')
                                 echo 'active'; ?>">
@@ -110,7 +108,6 @@ $uri = $_SERVER["REQUEST_URI"];
                                 </a>
                             </li>
                         </ul>
-                        <!-- <p class="menu-label">Examples</p> -->
                         <ul class="menu-list">
 
 
@@ -156,7 +153,7 @@ $uri = $_SERVER["REQUEST_URI"];
                                     </li>
                                     <li>
                                         <a href="/purchaseOrders">
-                                            <span class="menu-item-label"> Purchase Order List</span>
+                                            <span class="menu-item-label"> Purchase Order </span>
                                         </a>
                                     </li>
 

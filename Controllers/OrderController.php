@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Customer;
 use App\Models\Employee;
 use App\Models\Product;
+use App\Models\ProductionLine;
 use App\Models\ProductOrder;
 
 class OrderController extends Controller
@@ -87,7 +88,9 @@ class OrderController extends Controller
     public function complete()
     {
         $Order = new Order;
+        $PL = new ProductionLine;
         $Order->complete($_POST['id']);
+        $PL->remove($_POST['order_id']);
         echo "success";
     }
     /**
