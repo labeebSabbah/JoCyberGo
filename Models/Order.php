@@ -78,5 +78,14 @@ class Order extends Model
     }
 
 
+    public function new_all(){
+        $stmt = $this->conn->prepare(" SELECT *  FROM  all_order where is_done = false ORDER BY id");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result;
+
+    }
+
+
     
 }

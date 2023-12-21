@@ -25,7 +25,7 @@ class UserController extends Controller {
         $Order = new Order;
         $total = $Order->total()["total_sum"];
         $customers = $Customer->all()->num_rows;
-        $orders = $Order->all()->num_rows;
+        $orders = $Order->new_all()->num_rows;
         $this->render("home","Dashboard", ["customers" => $customers, "orders" => $orders, "total" => $total]);
     }
     /**

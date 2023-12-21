@@ -48,7 +48,6 @@ class OrderController extends Controller
         $Order = new Order;
         $Product = new Product;
         $ProductOrder = new ProductOrder;
-        $order_id = $Order->create($_POST["customer"], $_POST["total"], $_POST["priority"], $_POST["employee_id"]);
         $temp = explode(",", $_POST['products']);
         $products  = [];
         foreach ($temp as $id) {
@@ -58,12 +57,14 @@ class OrderController extends Controller
             }
             $products[$id] = 1;
         }
-        print_r($products);
+        // print_r($products);
         if (!$Product->quantity_update($products)) {
             $_SESSION["error"] = "Quantity Not Enough";
             header("Location: /order/create");
             exit();
         }
+        $order_id = $Order->create($_POST["customer"], $_POST["total"], $_POST["priority"], $_POST["employee_id"]);
+
         foreach ($products as $product_id => $amount) {
             $ProductOrder->create($order_id, $product_id, $amount);
         }
